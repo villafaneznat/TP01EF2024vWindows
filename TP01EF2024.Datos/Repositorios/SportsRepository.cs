@@ -69,9 +69,17 @@ namespace TP01EF2024.Datos.Repositorios
             return _context.Sports.SingleOrDefault(s => s.SportId == id);
         }
 
-        public List<Sport> GetSports()
+        public List<Sport> GetSports(string? textFil = null)
         {
-            return _context.Sports.OrderBy(s => s.SportId).ToList();
+            if (textFil is null)
+            {
+                return _context.Sports.AsNoTracking().ToList();
+            }
+            else
+            {
+                return _context.Sports.Where(b => b.SportName.Contains(textFil)).ToList();
+            }
+            
         }
 
         public List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null)

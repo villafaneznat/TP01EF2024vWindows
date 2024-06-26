@@ -11,54 +11,56 @@ using TP01EF2024.Entidades;
 
 namespace TP01EF2024.Windows.Agregar_y_Editar
 {
-    public partial class BrandsFormAE : Form
+    public partial class SportsFormAE : Form
     {
+        private Sport sport;
 
-        private Brand brand;
-
-        public BrandsFormAE()
+        public SportsFormAE()
         {
             InitializeComponent();
         }
 
-        internal Brand GetBrand()
+        internal Sport GetSport()
         {
-            return brand;
+            return sport;
         }
 
-        internal void SetBrand(Brand brand)
+        internal void SetSport(Sport sport)
         {
-            this.brand = brand;
+            this.sport = sport;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            if (brand != null)
+            if (sport != null)
             {
-                MarcaTxt.Text = brand.BrandName;
+                DeporteTxt.Text = sport.SportName;
             }
         }
+
 
         private void CancelarBtn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void IngresarBtn_Click(object sender, EventArgs e)
+
+        private void GuardarBtn_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
             {
-                if (brand == null)
+                if (sport == null)
                 {
-                    brand = new Brand();
+                    sport = new Sport();
                 }
-                brand.BrandName = MarcaTxt.Text;
+                sport.SportName = DeporteTxt.Text;
 
                 DialogResult = DialogResult.OK;
             }
         }
+
 
         private bool ValidarDatos()
         {
@@ -66,15 +68,15 @@ namespace TP01EF2024.Windows.Agregar_y_Editar
 
             errorProvider.Clear();
 
-            if (string.IsNullOrEmpty(MarcaTxt.Text) || string.IsNullOrWhiteSpace(MarcaTxt.Text))
+            if (string.IsNullOrEmpty(DeporteTxt.Text) || string.IsNullOrWhiteSpace(DeporteTxt.Text))
             {
                 valido = false;
-                errorProvider.SetError(MarcaTxt, "La marca es requerida.");
+                errorProvider.SetError(DeporteTxt, "La marca es requerida.");
             }
-            if (MarcaTxt.Text.Length > 50)
+            if (DeporteTxt.Text.Length > 20)
             {
                 valido = false;
-                errorProvider.SetError(MarcaTxt, "Sólo se permiten hasta 50 caracteres.");
+                errorProvider.SetError(DeporteTxt, "Sólo se permiten hasta 20 caracteres.");
             }
 
             return valido;

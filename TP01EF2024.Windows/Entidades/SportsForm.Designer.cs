@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             panel1 = new Panel();
             ActualizarBtn = new FontAwesome.Sharp.IconButton();
             panel4 = new Panel();
@@ -96,6 +96,7 @@
             ActualizarBtn.TabIndex = 6;
             ActualizarBtn.Text = "Actualizar";
             ActualizarBtn.UseVisualStyleBackColor = false;
+            ActualizarBtn.Click += ActualizarBtn_Click;
             // 
             // panel4
             // 
@@ -129,9 +130,10 @@
             BuscarDeporteTxt.ForeColor = Color.FromArgb(224, 224, 224);
             BuscarDeporteTxt.Location = new Point(37, 6);
             BuscarDeporteTxt.Name = "BuscarDeporteTxt";
-            BuscarDeporteTxt.PlaceholderText = "Bucar Deporte...";
+            BuscarDeporteTxt.PlaceholderText = "Buscar Deporte...";
             BuscarDeporteTxt.Size = new Size(285, 16);
             BuscarDeporteTxt.TabIndex = 0;
+            BuscarDeporteTxt.TextChanged += BuscarDeporteTxt_TextChanged;
             // 
             // panel3
             // 
@@ -173,6 +175,7 @@
             OrderABtn.TabIndex = 5;
             OrderABtn.Text = "A - Z";
             OrderABtn.UseVisualStyleBackColor = false;
+            OrderABtn.Click += OrderABtn_Click;
             // 
             // iconButton1
             // 
@@ -211,6 +214,7 @@
             OrderZBtn.TabIndex = 4;
             OrderZBtn.Text = "Z - A";
             OrderZBtn.UseVisualStyleBackColor = false;
+            OrderZBtn.Click += OrderZBtn_Click;
             // 
             // BorrarBtn
             // 
@@ -228,6 +232,7 @@
             BorrarBtn.TabIndex = 2;
             BorrarBtn.Text = "Borrar";
             BorrarBtn.UseVisualStyleBackColor = false;
+            BorrarBtn.Click += BorrarBtn_Click;
             // 
             // EditarBtn
             // 
@@ -245,6 +250,7 @@
             EditarBtn.TabIndex = 1;
             EditarBtn.Text = "Editar";
             EditarBtn.UseVisualStyleBackColor = false;
+            EditarBtn.Click += EditarBtn_Click;
             // 
             // NuevoDeporteBtn
             // 
@@ -262,41 +268,42 @@
             NuevoDeporteBtn.TabIndex = 0;
             NuevoDeporteBtn.Text = "Nuevo Deporte";
             NuevoDeporteBtn.UseVisualStyleBackColor = false;
+            NuevoDeporteBtn.Click += NuevoDeporteBtn_Click;
             // 
             // DgvSports
             // 
             DgvSports.AllowUserToAddRows = false;
             DgvSports.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle1.Padding = new Padding(10);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(37, 212, 102);
-            DgvSports.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle6.Padding = new Padding(10);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(37, 212, 102);
+            DgvSports.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             DgvSports.BackgroundColor = Color.FromArgb(44, 44, 44);
             DgvSports.BorderStyle = BorderStyle.None;
             DgvSports.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DgvSports.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DgvSports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DgvSports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DgvSports.ColumnHeadersHeight = 50;
             DgvSports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DgvSports.Columns.AddRange(new DataGridViewColumn[] { SportNameCol });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DgvSports.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDarkDark;
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DgvSports.DefaultCellStyle = dataGridViewCellStyle8;
             DgvSports.Dock = DockStyle.Fill;
             DgvSports.EnableHeadersVisualStyles = false;
             DgvSports.Location = new Point(0, 0);
@@ -305,24 +312,24 @@
             DgvSports.Name = "DgvSports";
             DgvSports.ReadOnly = true;
             DgvSports.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle4.Padding = new Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DgvSports.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle9.Padding = new Padding(5);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DgvSports.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             DgvSports.RowHeadersWidth = 30;
             DgvSports.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle5.Padding = new Padding(10);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
-            DgvSports.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle10.Padding = new Padding(10);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(37, 211, 102);
+            DgvSports.RowsDefaultCellStyle = dataGridViewCellStyle10;
             DgvSports.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DgvSports.Size = new Size(740, 380);
             DgvSports.TabIndex = 5;
@@ -369,6 +376,7 @@
             PagPrimeraBtn.Text = "<<";
             PagPrimeraBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagPrimeraBtn.UseVisualStyleBackColor = false;
+            PagPrimeraBtn.Click += PagPrimeraBtn_Click;
             // 
             // PagUltimaBtn
             // 
@@ -387,6 +395,7 @@
             PagUltimaBtn.Text = ">>";
             PagUltimaBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagUltimaBtn.UseVisualStyleBackColor = false;
+            PagUltimaBtn.Click += PagUltimaBtn_Click;
             // 
             // PagSiguienteBtn
             // 
@@ -405,6 +414,7 @@
             PagSiguienteBtn.Text = ">";
             PagSiguienteBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagSiguienteBtn.UseVisualStyleBackColor = false;
+            PagSiguienteBtn.Click += PagSiguienteBtn_Click;
             // 
             // PagAnteriorBtn
             // 
@@ -423,6 +433,7 @@
             PagAnteriorBtn.Text = "<";
             PagAnteriorBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagAnteriorBtn.UseVisualStyleBackColor = false;
+            PagAnteriorBtn.Click += PagAnteriorBtn_Click;
             // 
             // CantidadDeportesLbl
             // 
@@ -507,6 +518,7 @@
             MinimumSize = new Size(928, 550);
             Name = "SportsForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += SportsForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

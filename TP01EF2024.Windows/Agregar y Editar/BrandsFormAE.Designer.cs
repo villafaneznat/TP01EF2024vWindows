@@ -67,6 +67,7 @@
             MarcaTxt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             MarcaTxt.ForeColor = Color.FromArgb(224, 224, 224);
             MarcaTxt.Location = new Point(5, 6);
+            MarcaTxt.MaxLength = 50;
             MarcaTxt.Name = "MarcaTxt";
             MarcaTxt.Size = new Size(247, 16);
             MarcaTxt.TabIndex = 0;
@@ -120,7 +121,6 @@
             MinimumSize = new Size(393, 409);
             Name = "BrandsFormAE";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += BrandsFormAE_Load;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();

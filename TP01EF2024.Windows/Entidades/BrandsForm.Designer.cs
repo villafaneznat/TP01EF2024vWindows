@@ -130,7 +130,7 @@
             BuscarMarcaTxt.ForeColor = Color.FromArgb(224, 224, 224);
             BuscarMarcaTxt.Location = new Point(37, 6);
             BuscarMarcaTxt.Name = "BuscarMarcaTxt";
-            BuscarMarcaTxt.PlaceholderText = "Bucar Marca...";
+            BuscarMarcaTxt.PlaceholderText = "Buscar Marca...";
             BuscarMarcaTxt.Size = new Size(285, 16);
             BuscarMarcaTxt.TabIndex = 0;
             BuscarMarcaTxt.TextChanged += BuscarMarcaTxt_TextChanged;

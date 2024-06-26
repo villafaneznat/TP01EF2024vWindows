@@ -55,7 +55,7 @@ namespace TP01EF2024.Datos.Repositorios
 
         public List<Brand> GetBrands(string? textFil = null)
         {
-            if (textFil is null)
+            if (textFil == null)
             {
                 return _context.Brands.AsNoTracking().ToList();
             }

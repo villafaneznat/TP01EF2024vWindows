@@ -15,7 +15,7 @@ namespace TP01EF2024.Servicios.Interfaces
         bool EstaRelacionado(Sport sport);
         bool Existe(Sport sport);
         Sport? GetSportPorId(int id);
-        List<Sport> GetSports();
+        List<Sport> GetSports(string? textFil = null);
         int GetCantidad();
         List<Shoe>? GetShoes(Sport sport);
         List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null);

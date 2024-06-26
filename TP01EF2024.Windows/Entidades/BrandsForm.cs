@@ -26,7 +26,7 @@ namespace TP01EF2024.Windows.Entidades
 
         List<Brand> brands;
 
-        string textFil = null;
+        string? textFil;
 
         Orden orden = Orden.SinOrden;
 
@@ -44,26 +44,23 @@ namespace TP01EF2024.Windows.Entidades
 
         private void BrandsForm_Load(object sender, EventArgs e)
         {
-            //brands = _servicio.GetBrands();
-
-            CantidadMarcasLbl.Text = _servicio.GetCantidad().ToString();
+            brands = _servicio.GetBrandsPaginadosOrdenados(pageNum, pageSize, orden);
 
             SeleccionarLista();
 
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
-        private void RecargarGrilla()
+        private void RecargarGrilla(List<Brand> brands, int cantReg)
         {
-            cantidadRegistros = _servicio.GetCantidad();
 
-            cantidadPaginas = FormHelper.CalcularPaginas(cantidadRegistros, pageSize);
+            cantidadPaginas = FormHelper.CalcularPaginas(cantReg, pageSize);
 
             CantidadPaginasLbl.Text = cantidadPaginas.ToString();
 
             PaginaActualLbl.Text = (pageNum + 1).ToString();
 
-            brands = _servicio.GetBrandsPaginadosOrdenados(pageNum, pageSize, orden);
+            CantidadMarcasLbl.Text = cantReg.ToString();
 
             GridHelper.MostrarDatosEnGrilla<Brand>(brands, DgvBrands);
 
@@ -76,20 +73,21 @@ namespace TP01EF2024.Windows.Entidades
         private void BuscarMarcaTxt_TextChanged(object sender, EventArgs e)
         {
             SeleccionarLista();
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void SeleccionarLista()
         {
-            if (BuscarMarcaTxt.Text == "Buscar Marca...")
+            if (BuscarMarcaTxt.Text == "")
             {
-                brands = _servicio.GetBrands();
+                brands = _servicio.GetBrandsPaginadosOrdenados(pageNum, pageSize, orden);
+                cantidadRegistros = _servicio.GetCantidad();
             }
             else
             {
                 textFil = BuscarMarcaTxt.Text;
                 brands = _servicio.GetBrands(textFil);
-
+                cantidadRegistros = _servicio.GetBrands(textFil).Count();
             }
         }
 
@@ -221,7 +219,7 @@ namespace TP01EF2024.Windows.Entidades
             // Ir a la última página
             pageNum = cantidadPaginas - 1;
             PaginaActualLbl.Text = (pageNum + 1).ToString();
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void PagSiguienteBtn_Click(object sender, EventArgs e)
@@ -230,7 +228,7 @@ namespace TP01EF2024.Windows.Entidades
             pageNum++;
             if (pageNum > cantidadPaginas - 1) { pageNum = cantidadPaginas - 1; }
             PaginaActualLbl.Text = (pageNum + 1).ToString();
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void PagAnteriorBtn_Click(object sender, EventArgs e)
@@ -239,7 +237,7 @@ namespace TP01EF2024.Windows.Entidades
             pageNum--;
             if (pageNum < 0) { pageNum = 0; }
             PaginaActualLbl.Text = (pageNum + 1).ToString();
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void PagPrimeraBtn_Click(object sender, EventArgs e)
@@ -247,26 +245,26 @@ namespace TP01EF2024.Windows.Entidades
             // Ir a la primera página
             pageNum = 0;
             PaginaActualLbl.Text = (pageNum + 1).ToString();
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void OrderABtn_Click(object sender, EventArgs e)
         {
             orden = Orden.AZ;
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void OrderZBtn_Click(object sender, EventArgs e)
         {
             orden = Orden.ZA;
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
 
         private void ActualizarBtn_Click(object sender, EventArgs e)
         {
             orden = Orden.SinOrden;
-            RecargarGrilla();
+            RecargarGrilla(brands, cantidadRegistros);
         }
-    }
 
+    }
 }

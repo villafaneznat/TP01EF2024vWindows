@@ -75,11 +75,11 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<Sport> GetSports()
+        public List<Sport> GetSports(string? textFil = null)
         {
             try
             {
-                return _repository.GetSports();
+                return _repository.GetSports(textFil);
             }
             catch (Exception)
             {

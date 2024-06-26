@@ -34,6 +34,9 @@ namespace TP01EF2024.Windows.Helpers
                 case Brand brand:
                     r.Cells[0].Value = brand.BrandName;
                     break;
+                case Sport sport:
+                    r.Cells[0].Value = sport.SportName;
+                    break;
                 default:
                     break;
 
