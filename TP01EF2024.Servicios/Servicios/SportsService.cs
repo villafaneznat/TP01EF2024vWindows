@@ -75,11 +75,11 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<Sport> GetSports(string? textFil = null)
+        public List<Sport> GetSports()
         {
             try
             {
-                return _repository.GetSports(textFil);
+                return _repository.GetSports();
             }
             catch (Exception)
             {
@@ -122,9 +122,9 @@ namespace TP01EF2024.Servicios.Servicios
             return _repository.GetShoes(sport);
         }
 
-        public List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
-            return _repository.GetSportsPaginadosOrdenados(page, pageSize, orden);
+            return _repository.GetSportsPaginadosOrdenados(page, pageSize, orden, textFil);
         }
     }
 }

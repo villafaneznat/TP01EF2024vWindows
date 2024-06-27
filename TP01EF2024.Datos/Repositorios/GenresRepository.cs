@@ -75,10 +75,15 @@ namespace TP01EF2024.Datos.Repositorios
 
         }
 
-        public List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
             IQueryable<Genre> query = _context.Genres.AsNoTracking();
 
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(g => g.GenreName.Contains(textFil));
+            }
             //ORDEN
             if (orden != null)
             {
@@ -94,7 +99,6 @@ namespace TP01EF2024.Datos.Repositorios
                         break;
                 }
             }
-
             //PAGINADO
             List<Genre> listaPaginada = query.AsNoTracking()
                 .Skip(page * pageSize) //Saltea estos registros

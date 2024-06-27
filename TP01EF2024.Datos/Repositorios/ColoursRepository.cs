@@ -63,13 +63,18 @@ namespace TP01EF2024.Datos.Repositorios
 
         public List<Colour> GetColours()
         {
-            return _context.Colours.OrderBy(c => c.ColourId).AsNoTracking().ToList();
+            return _context.Colours.AsNoTracking().ToList();
         }
 
-        public List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
             IQueryable<Colour> query = _context.Colours.AsNoTracking();
 
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(c => c.ColourName.Contains(textFil));
+            }
             //ORDEN
             if (orden != null)
             {

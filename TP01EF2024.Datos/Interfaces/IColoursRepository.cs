@@ -19,7 +19,7 @@ namespace TP01EF2024.Datos.Interfaces
         List<Colour> GetColours();
         int GetCantidad();
         List<Shoe>? GetShoes(Colour colour);
-        List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null);
+        List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null);
 
 
     }

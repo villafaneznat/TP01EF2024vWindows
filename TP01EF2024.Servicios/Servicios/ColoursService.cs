@@ -100,9 +100,9 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
-            return _repository.GetColoursPaginadosOrdenados(page, pageSize, orden);
+            return _repository.GetColoursPaginadosOrdenados(page, pageSize, orden, textFil);
         }
 
         public List<Shoe>? GetShoes(Colour colour)

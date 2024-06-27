@@ -37,6 +37,9 @@ namespace TP01EF2024.Windows.Helpers
                 case Sport sport:
                     r.Cells[0].Value = sport.SportName;
                     break;
+                case Colour colour:
+                    r.Cells[0].Value = colour.ColourName;
+                    break;
                 default:
                     break;
 

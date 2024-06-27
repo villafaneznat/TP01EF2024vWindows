@@ -16,10 +16,10 @@ namespace TP01EF2024.Datos.Interfaces
         bool EstaRelacionado(Brand brand);
         bool Existe(Brand brand);
         Brand? GetBrandPorId(int id);
-        List<Brand> GetBrands(string? textFil = null);
+        List<Brand> GetBrands();
         int GetCantidad();
         List<Shoe>? GetShoes(Brand brand);
-        List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null);
+        List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null);
 
     }
 }

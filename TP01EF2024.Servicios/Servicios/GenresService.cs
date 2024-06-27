@@ -122,9 +122,9 @@ namespace TP01EF2024.Servicios.Servicios
             return _repository.GetShoes(genre);
         }
 
-        public List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
-            return _repository.GetGenresPaginadosOrdenados(page, pageSize, orden);
+            return _repository.GetGenresPaginadosOrdenados(page, pageSize, orden, textFil);
         }
 
 

@@ -75,22 +75,14 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<Brand> GetBrands(string? textFil = null)
+        public List<Brand> GetBrands()
         {
-            try
-            {
-                return _repository.GetBrands(textFil);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            return _repository.GetBrands();     
         }
 
-        public List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
-            return _repository.GetBrandsPaginadosOrdenados(page, pageSize, orden);
+            return _repository.GetBrandsPaginadosOrdenados(page, pageSize, orden, textFil);
         }
 
         public int GetCantidad()

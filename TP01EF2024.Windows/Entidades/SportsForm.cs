@@ -77,8 +77,8 @@ namespace TP01EF2024.Windows.Entidades
             else
             {
                 textFil = BuscarDeporteTxt.Text;
-                sports = _servicio.GetSports(textFil);
-                cantidadRegistros = _servicio.GetSports(textFil).Count();
+                sports = _servicio.GetSportsPaginadosOrdenados(pageNum, pageSize, orden, textFil);
+                cantidadRegistros = sports.Count();
             }
         }
 
@@ -215,6 +215,7 @@ namespace TP01EF2024.Windows.Entidades
         private void ActualizarBtn_Click(object sender, EventArgs e)
         {
             orden = Orden.SinOrden;
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
@@ -223,6 +224,7 @@ namespace TP01EF2024.Windows.Entidades
             // Ir a la última página
             pageNum = cantidadPaginas - 1;
             PaginaActualLbl.Text = (pageNum + 1).ToString();
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
@@ -232,6 +234,7 @@ namespace TP01EF2024.Windows.Entidades
             pageNum++;
             if (pageNum > cantidadPaginas - 1) { pageNum = cantidadPaginas - 1; }
             PaginaActualLbl.Text = (pageNum + 1).ToString();
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
@@ -241,6 +244,7 @@ namespace TP01EF2024.Windows.Entidades
             pageNum--;
             if (pageNum < 0) { pageNum = 0; }
             PaginaActualLbl.Text = (pageNum + 1).ToString();
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
@@ -249,18 +253,21 @@ namespace TP01EF2024.Windows.Entidades
             // Ir a la primera página
             pageNum = 0;
             PaginaActualLbl.Text = (pageNum + 1).ToString();
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
         private void OrderABtn_Click(object sender, EventArgs e)
         {
             orden = Orden.AZ;
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
 
         private void OrderZBtn_Click(object sender, EventArgs e)
         {
             orden = Orden.ZA;
+            SeleccionarLista();
             RecargarGrilla(sports, cantidadRegistros);
         }
     }

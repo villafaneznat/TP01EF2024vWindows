@@ -1,6 +1,6 @@
 ﻿namespace TP01EF2024.Windows.Agregar_y_Editar
 {
-    partial class SportsFormAE
+    partial class ColoursFormAE
     {
         /// <summary>
         /// Required designer variable.
@@ -29,15 +29,27 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            label = new Label();
             CancelarBtn = new Button();
             GuardarBtn = new Button();
             panel4 = new Panel();
-            DeporteTxt = new TextBox();
-            label = new Label();
+            ColorTxt = new TextBox();
             errorProvider = new ErrorProvider(components);
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.BackColor = Color.Transparent;
+            label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.ForeColor = Color.FromArgb(224, 224, 224);
+            label.Location = new Point(75, 70);
+            label.Name = "label";
+            label.Size = new Size(218, 21);
+            label.TabIndex = 10;
+            label.Text = "Ingrese el nombre del color:";
             // 
             // CancelarBtn
             // 
@@ -46,10 +58,10 @@
             CancelarBtn.FlatStyle = FlatStyle.Flat;
             CancelarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CancelarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            CancelarBtn.Location = new Point(210, 246);
+            CancelarBtn.Location = new Point(203, 257);
             CancelarBtn.Name = "CancelarBtn";
             CancelarBtn.Size = new Size(113, 40);
-            CancelarBtn.TabIndex = 8;
+            CancelarBtn.TabIndex = 12;
             CancelarBtn.Text = "CANCELAR";
             CancelarBtn.UseVisualStyleBackColor = false;
             CancelarBtn.Click += CancelarBtn_Click;
@@ -61,10 +73,10 @@
             GuardarBtn.FlatStyle = FlatStyle.Flat;
             GuardarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GuardarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            GuardarBtn.Location = new Point(54, 246);
+            GuardarBtn.Location = new Point(47, 257);
             GuardarBtn.Name = "GuardarBtn";
             GuardarBtn.Size = new Size(113, 40);
-            GuardarBtn.TabIndex = 7;
+            GuardarBtn.TabIndex = 11;
             GuardarBtn.Text = "GUARDAR";
             GuardarBtn.UseVisualStyleBackColor = false;
             GuardarBtn.Click += GuardarBtn_Click;
@@ -72,54 +84,42 @@
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(64, 64, 64);
-            panel4.Controls.Add(DeporteTxt);
-            panel4.Location = new Point(54, 145);
+            panel4.Controls.Add(ColorTxt);
+            panel4.Location = new Point(47, 145);
             panel4.Name = "panel4";
             panel4.Size = new Size(269, 29);
-            panel4.TabIndex = 6;
+            panel4.TabIndex = 13;
             // 
-            // DeporteTxt
+            // ColorTxt
             // 
-            DeporteTxt.BackColor = Color.FromArgb(64, 64, 64);
-            DeporteTxt.BorderStyle = BorderStyle.None;
-            DeporteTxt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            DeporteTxt.ForeColor = Color.FromArgb(224, 224, 224);
-            DeporteTxt.Location = new Point(5, 6);
-            DeporteTxt.MaxLength = 20;
-            DeporteTxt.Name = "DeporteTxt";
-            DeporteTxt.Size = new Size(247, 16);
-            DeporteTxt.TabIndex = 0;
-            // 
-            // label
-            // 
-            label.AutoSize = true;
-            label.BackColor = Color.Transparent;
-            label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label.ForeColor = Color.FromArgb(224, 224, 224);
-            label.Location = new Point(71, 84);
-            label.Name = "label";
-            label.Size = new Size(239, 21);
-            label.TabIndex = 5;
-            label.Text = "Ingrese el nombre del deporte:";
+            ColorTxt.BackColor = Color.FromArgb(64, 64, 64);
+            ColorTxt.BorderStyle = BorderStyle.None;
+            ColorTxt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ColorTxt.ForeColor = Color.FromArgb(224, 224, 224);
+            ColorTxt.Location = new Point(5, 6);
+            ColorTxt.MaxLength = 50;
+            ColorTxt.Name = "ColorTxt";
+            ColorTxt.Size = new Size(247, 16);
+            ColorTxt.TabIndex = 0;
             // 
             // errorProvider
             // 
             errorProvider.ContainerControl = this;
             // 
-            // SportsFormAE
+            // ColoursFormAE
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
             ClientSize = new Size(377, 370);
             ControlBox = false;
-            Controls.Add(CancelarBtn);
-            Controls.Add(GuardarBtn);
             Controls.Add(panel4);
             Controls.Add(label);
+            Controls.Add(CancelarBtn);
+            Controls.Add(GuardarBtn);
             MaximumSize = new Size(393, 386);
             MinimumSize = new Size(393, 386);
-            Name = "SportsFormAE";
+            Name = "ColoursFormAE";
             StartPosition = FormStartPosition.CenterScreen;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
@@ -130,11 +130,11 @@
 
         #endregion
 
+        private Label label;
         private Button CancelarBtn;
         private Button GuardarBtn;
         private Panel panel4;
-        private TextBox DeporteTxt;
-        private Label label;
+        private TextBox ColorTxt;
         private ErrorProvider errorProvider;
     }
 }

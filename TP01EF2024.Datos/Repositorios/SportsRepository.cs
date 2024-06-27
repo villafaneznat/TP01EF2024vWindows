@@ -69,23 +69,21 @@ namespace TP01EF2024.Datos.Repositorios
             return _context.Sports.SingleOrDefault(s => s.SportId == id);
         }
 
-        public List<Sport> GetSports(string? textFil = null)
+        public List<Sport> GetSports()
         {
-            if (textFil is null)
-            {
-                return _context.Sports.AsNoTracking().ToList();
-            }
-            else
-            {
-                return _context.Sports.Where(b => b.SportName.Contains(textFil)).ToList();
-            }
+            return _context.Sports.AsNoTracking().ToList();
             
         }
 
-        public List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Sport> GetSportsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
             IQueryable<Sport> query = _context.Sports.AsNoTracking();
 
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(s => s.SportName.Contains(textFil));
+            }
             //ORDEN
             if (orden != null)
             {
@@ -101,7 +99,6 @@ namespace TP01EF2024.Datos.Repositorios
                         break;
                 }
             }
-
             //PAGINADO
             List<Sport> listaPaginada = query.AsNoTracking()
                 .Skip(page * pageSize) //Saltea estos registros

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Formats.Tar;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,21 +54,23 @@ namespace TP01EF2024.Datos.Repositorios
             return _context.Brands.AsNoTracking().SingleOrDefault(b => b.BrandId == id);
         }
 
-        public List<Brand> GetBrands(string? textFil = null)
+        public List<Brand> GetBrands()
         {
-            if (textFil == null)
-            {
-                return _context.Brands.AsNoTracking().ToList();
-            }
-            else
-            {
-                return _context.Brands.Where(b => b.BrandName.Contains(textFil)).ToList();
-            }
+
+            return _context.Brands.AsNoTracking().ToList();
+            
+
         }
 
-        public List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null)
+        public List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null)
         {
             IQueryable<Brand> query = _context.Brands.AsNoTracking();
+
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(b => b.BrandName.Contains(textFil));
+            }
 
             //ORDEN
             if (orden != null)

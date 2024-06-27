@@ -18,7 +18,7 @@ namespace TP01EF2024.Servicios.Interfaces
         Colour GetColourPorId(int id);
         bool EstaRelacionado(Colour colour);
         List<Shoe>? GetShoes(Colour colour);
-        List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null);
+        List<Colour> GetColoursPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null);
 
 
     }

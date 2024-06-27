@@ -19,6 +19,6 @@ namespace TP01EF2024.Datos.Interfaces
         List<Genre> GetGenres();
         int GetCantidad();
         List<Shoe>? GetShoes(Genre genre);
-        List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null);
+        List<Genre> GetGenresPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null);
     }
 }

@@ -13,12 +13,12 @@ namespace TP01EF2024.Servicios.Interfaces
         void Guardar(Brand brand);
         void Eliminar(Brand brand);
         bool Existe(Brand brand);
-        List<Brand> GetBrands(string? textFil = null);
+        List<Brand> GetBrands();
         int GetCantidad();
         Brand GetBrandPorId(int id);
         bool EstaRelacionado(Brand brand);
         List<Shoe>? GetShoes(Brand brand);
-        List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null);
+        List<Brand> GetBrandsPaginadosOrdenados(int page, int pageSize, Orden? orden = null, string? textFil = null);
 
 
     }

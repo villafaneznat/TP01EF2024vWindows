@@ -94,6 +94,7 @@
             ActualizarBtn.TabIndex = 6;
             ActualizarBtn.Text = "Actualizar";
             ActualizarBtn.UseVisualStyleBackColor = false;
+            ActualizarBtn.Click += ActualizarBtn_Click;
             // 
             // panel4
             // 
@@ -130,6 +131,7 @@
             BuscarColorTxt.PlaceholderText = "Bucar Color...";
             BuscarColorTxt.Size = new Size(285, 16);
             BuscarColorTxt.TabIndex = 0;
+            BuscarColorTxt.TextChanged += BuscarColorTxt_TextChanged;
             // 
             // panel2
             // 
@@ -168,6 +170,7 @@
             PagPrimeraBtn.Text = "<<";
             PagPrimeraBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagPrimeraBtn.UseVisualStyleBackColor = false;
+            PagPrimeraBtn.Click += PagPrimeraBtn_Click;
             // 
             // PagUltimaBtn
             // 
@@ -186,6 +189,7 @@
             PagUltimaBtn.Text = ">>";
             PagUltimaBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagUltimaBtn.UseVisualStyleBackColor = false;
+            PagUltimaBtn.Click += PagUltimaBtn_Click;
             // 
             // PagSiguienteBtn
             // 
@@ -204,6 +208,7 @@
             PagSiguienteBtn.Text = ">";
             PagSiguienteBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagSiguienteBtn.UseVisualStyleBackColor = false;
+            PagSiguienteBtn.Click += PagSiguienteBtn_Click;
             // 
             // PagAnteriorBtn
             // 
@@ -222,6 +227,7 @@
             PagAnteriorBtn.Text = "<";
             PagAnteriorBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagAnteriorBtn.UseVisualStyleBackColor = false;
+            PagAnteriorBtn.Click += PagAnteriorBtn_Click;
             // 
             // CantidadColoresLbl
             // 
@@ -325,6 +331,7 @@
             OrderABtn.TabIndex = 5;
             OrderABtn.Text = "A - Z";
             OrderABtn.UseVisualStyleBackColor = false;
+            OrderABtn.Click += OrderABtn_Click;
             // 
             // iconButton1
             // 
@@ -363,6 +370,7 @@
             OrderZBtn.TabIndex = 4;
             OrderZBtn.Text = "Z - A";
             OrderZBtn.UseVisualStyleBackColor = false;
+            OrderZBtn.Click += OrderZBtn_Click;
             // 
             // BorrarBtn
             // 
@@ -380,6 +388,7 @@
             BorrarBtn.TabIndex = 2;
             BorrarBtn.Text = "Borrar";
             BorrarBtn.UseVisualStyleBackColor = false;
+            BorrarBtn.Click += BorrarBtn_Click;
             // 
             // EditarBtn
             // 
@@ -397,6 +406,7 @@
             EditarBtn.TabIndex = 1;
             EditarBtn.Text = "Editar";
             EditarBtn.UseVisualStyleBackColor = false;
+            EditarBtn.Click += EditarBtn_Click;
             // 
             // NuevoColorBtn
             // 
@@ -414,15 +424,16 @@
             NuevoColorBtn.TabIndex = 0;
             NuevoColorBtn.Text = "Nuevo Color";
             NuevoColorBtn.UseVisualStyleBackColor = false;
+            NuevoColorBtn.Click += NuevoColorBtn_Click;
             // 
             // DgvColours
             // 
             DgvColours.AllowUserToAddRows = false;
             DgvColours.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle1.Padding = new Padding(10);
+            dataGridViewCellStyle1.Padding = new Padding(5);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(44, 44, 44);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(37, 212, 102);
             DgvColours.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -432,7 +443,7 @@
             DgvColours.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(32, 32, 32);
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(224, 224, 224);
@@ -469,9 +480,9 @@
             DgvColours.RowHeadersWidth = 30;
             DgvColours.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle5.Padding = new Padding(10);
+            dataGridViewCellStyle5.Padding = new Padding(5);
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(44, 44, 44);
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
             DgvColours.RowsDefaultCellStyle = dataGridViewCellStyle5;
@@ -500,6 +511,7 @@
             MaximumSize = new Size(928, 550);
             MinimumSize = new Size(928, 550);
             Name = "ColoursForm";
+            Load += ColoursForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

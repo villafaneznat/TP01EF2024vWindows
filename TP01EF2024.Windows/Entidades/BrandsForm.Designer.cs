@@ -441,9 +441,9 @@
             DgvBrands.AllowUserToAddRows = false;
             DgvBrands.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle1.Padding = new Padding(10);
+            dataGridViewCellStyle1.Padding = new Padding(5);
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(44, 44, 44);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(37, 212, 102);
             DgvBrands.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
@@ -453,7 +453,7 @@
             DgvBrands.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(32, 32, 32);
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(224, 224, 224);
@@ -480,7 +480,7 @@
             DgvBrands.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = Color.FromArgb(224, 224, 224);
             dataGridViewCellStyle4.Padding = new Padding(5);
             dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(32, 32, 32);
@@ -490,9 +490,9 @@
             DgvBrands.RowHeadersWidth = 30;
             DgvBrands.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle5.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle5.Padding = new Padding(10);
+            dataGridViewCellStyle5.Padding = new Padding(5);
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(44, 44, 44);
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
             DgvBrands.RowsDefaultCellStyle = dataGridViewCellStyle5;
