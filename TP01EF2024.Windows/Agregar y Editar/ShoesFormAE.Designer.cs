@@ -99,6 +99,7 @@
             NuevaMarcaLbl.Size = new Size(132, 13);
             NuevaMarcaLbl.TabIndex = 6;
             NuevaMarcaLbl.Text = "Ingrese una nueva marca";
+            NuevaMarcaLbl.Click += NuevaMarcaLbl_Click;
             // 
             // NuevoColorLbl
             // 
@@ -112,6 +113,7 @@
             NuevoColorLbl.Size = new Size(122, 13);
             NuevoColorLbl.TabIndex = 10;
             NuevoColorLbl.Text = "Ingrese un nuevo color";
+            NuevoColorLbl.Click += NuevoColorLbl_Click;
             // 
             // label4
             // 
@@ -149,6 +151,7 @@
             NuevoDeporteLbl.Size = new Size(137, 13);
             NuevoDeporteLbl.TabIndex = 14;
             NuevoDeporteLbl.Text = "Ingrese un nuevo deporte";
+            NuevoDeporteLbl.Click += NuevoDeporteLbl_Click;
             // 
             // label7
             // 
@@ -198,6 +201,7 @@
             NuevoGeneroLbl.Size = new Size(132, 13);
             NuevoGeneroLbl.TabIndex = 18;
             NuevoGeneroLbl.Text = "Ingrese un nuevo genero";
+            NuevoGeneroLbl.Click += NuevoGeneroLbl_Click;
             // 
             // label10
             // 

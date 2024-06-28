@@ -16,6 +16,8 @@ namespace TP01EF2024.Windows.Entidades
 
         List<Colour> colours;
 
+        Colour colourForShoesAE;
+
         string? textFil = null;
 
         Orden orden = Orden.SinOrden;
@@ -121,7 +123,7 @@ namespace TP01EF2024.Windows.Entidades
             }
         }
 
-        private void NuevoColorBtn_Click(object sender, EventArgs e)
+        public void NuevoColorBtn_Click(object sender, EventArgs e)
         {
             ColoursFormAE frm = new ColoursFormAE();
 
@@ -140,6 +142,8 @@ namespace TP01EF2024.Windows.Entidades
 
                     ColoursForm_Load(sender, e);
 
+                    colourForShoesAE = colour;
+
                     MessageBox.Show("Registro agregado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -155,6 +159,11 @@ namespace TP01EF2024.Windows.Entidades
 
             }
 
+        }
+
+        public Colour GetColour()
+        {
+            return colourForShoesAE;
         }
 
         private void EditarBtn_Click(object sender, EventArgs e)

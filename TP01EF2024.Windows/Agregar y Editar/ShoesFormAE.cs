@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TP01EF2024.Entidades;
+using TP01EF2024.Windows.Entidades;
 using TP01EF2024.Windows.Helpers;
 
 namespace TP01EF2024.Windows.Agregar_y_Editar
@@ -197,6 +198,76 @@ namespace TP01EF2024.Windows.Agregar_y_Editar
             else
             {
                 genre = null;
+            }
+
+        }
+
+        private void NuevaMarcaLbl_Click(object sender, EventArgs e)
+        {
+            BrandsForm frm = new BrandsForm();
+
+            // Invoca el método que ya tengo en BrandsForm
+            frm.NuevaMarcaBtn_Click(sender, e);
+
+            // Actualizo el ComboBox de marcas
+            CombosHelper.CargarComboMarcas(_serviceProvider, ref ComboMarcas);
+
+            //Selecciono la marca que acabo de agregar
+            brand = frm.GetBrand();
+
+            if (brand != null)
+            {
+                ComboMarcas.SelectedValue = brand.BrandId;
+            }
+        }
+
+        private void NuevoColorLbl_Click(object sender, EventArgs e)
+        {
+            ColoursForm frm = new ColoursForm();
+
+            frm.NuevoColorBtn_Click(sender, e);
+
+            CombosHelper.CargarComboColores(_serviceProvider, ref ComboColores);
+
+            colour = frm.GetColour();
+
+            if (colour != null)
+            {
+                ComboColores.SelectedValue = colour.ColourId;
+            }
+
+        }
+
+        private void NuevoDeporteLbl_Click(object sender, EventArgs e)
+        {
+            SportsForm frm = new SportsForm();
+
+            frm.NuevoDeporteBtn_Click(sender, e);
+
+            CombosHelper.CargarComboDeportes(_serviceProvider, ref ComboDeportes);
+
+            sport = frm.GetSport();
+
+            if (colour != null)
+            {
+                ComboDeportes.SelectedValue = sport.SportId;
+            }
+
+        }
+
+        private void NuevoGeneroLbl_Click(object sender, EventArgs e)
+        {
+            GenresForm frm = new GenresForm();
+
+            frm.NuevoGeneroBtn_Click(sender, e);
+
+            CombosHelper.CargarComboGeneros(_serviceProvider, ref ComboGeneros);
+
+            genre = frm.GetGenre();
+
+            if (colour != null)
+            {
+                ComboGeneros.SelectedValue = genre.GenreId;
             }
 
         }

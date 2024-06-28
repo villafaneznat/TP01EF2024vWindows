@@ -25,6 +25,8 @@ namespace TP01EF2024.Windows.Entidades
 
         List<Genre> genres;
 
+        Genre genreForShoesAE;
+
         string? textFil;
 
         Orden orden = Orden.SinOrden;
@@ -90,7 +92,7 @@ namespace TP01EF2024.Windows.Entidades
             RecargarGrilla(genres, cantidadRegistros);
         }
 
-        private void NuevoGeneroBtn_Click(object sender, EventArgs e)
+        public void NuevoGeneroBtn_Click(object sender, EventArgs e)
         {
             GenresFormAE frm = new GenresFormAE();
 
@@ -109,6 +111,8 @@ namespace TP01EF2024.Windows.Entidades
 
                     GenresForm_Load(sender, e);
 
+                    genreForShoesAE = genre;
+
                     MessageBox.Show("Registro agregado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -126,6 +130,10 @@ namespace TP01EF2024.Windows.Entidades
 
         }
 
+        public Genre GetGenre()
+        {
+            return genreForShoesAE;
+        }
         private void EditarBtn_Click(object sender, EventArgs e)
         {
             if (DgvGenres.SelectedRows.Count == 0) { return; }

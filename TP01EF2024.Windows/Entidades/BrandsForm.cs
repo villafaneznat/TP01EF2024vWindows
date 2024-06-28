@@ -14,6 +14,8 @@ namespace TP01EF2024.Windows.Entidades
 
         private readonly IBrandsService? _servicio;
 
+        Brand brandForShoesAE;
+
         List<Brand> brands;
 
         string? textFil;
@@ -81,7 +83,7 @@ namespace TP01EF2024.Windows.Entidades
             }
         }
 
-        private void NuevaMarcaBtn_Click(object sender, EventArgs e)
+        public void NuevaMarcaBtn_Click(object sender, EventArgs e)
         {
             BrandsFormAE frm = new BrandsFormAE();
 
@@ -98,9 +100,12 @@ namespace TP01EF2024.Windows.Entidades
                 {
                     _servicio.Guardar(brand);
 
+                    brandForShoesAE = brand;
+
                     BrandsForm_Load(sender, e);
 
                     MessageBox.Show("Registro agregado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
@@ -116,6 +121,10 @@ namespace TP01EF2024.Windows.Entidades
             }
         }
 
+        public Brand GetBrand()
+        {
+            return brandForShoesAE;
+        }
         private void EditarMarcaBtn_Click(object sender, EventArgs e)
         {
             if (DgvBrands.SelectedRows.Count == 0) { return; }

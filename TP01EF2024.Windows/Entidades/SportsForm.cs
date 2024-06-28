@@ -25,6 +25,8 @@ namespace TP01EF2024.Windows.Entidades
 
         List<Sport> sports;
 
+        Sport sportForShoesAE;
+
         string? textFil = null;
 
         Orden orden = Orden.SinOrden;
@@ -130,7 +132,7 @@ namespace TP01EF2024.Windows.Entidades
 
         }
 
-        private void NuevoDeporteBtn_Click(object sender, EventArgs e)
+        public void NuevoDeporteBtn_Click(object sender, EventArgs e)
         {
             SportsFormAE frm = new SportsFormAE();
 
@@ -149,6 +151,8 @@ namespace TP01EF2024.Windows.Entidades
 
                     SportsForm_Load(sender, e);
 
+                    sportForShoesAE = sport;
+
                     MessageBox.Show("Registro agregado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -163,6 +167,11 @@ namespace TP01EF2024.Windows.Entidades
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        public Sport GetSport()
+        {
+            return sportForShoesAE;
         }
 
         private void EditarBtn_Click(object sender, EventArgs e)
