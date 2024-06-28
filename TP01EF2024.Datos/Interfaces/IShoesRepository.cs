@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP01EF2024.Entidades;
+using TP01EF2024.Entidades.Dtos;
 using TP01EF2024.Entidades.Enums;
 
 namespace TP01EF2024.Datos.Interfaces
@@ -18,11 +19,11 @@ namespace TP01EF2024.Datos.Interfaces
         Shoe? GetShoePorId(int id);
         List<Shoe> GetShoes();
         int GetCantidad();
-        List<Shoe> GetListaPaginadaOrdenadaFiltrada(
-            bool paginar,
+        List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(
             int page,
             int pageSize,
             Orden? orden = null,
+            string? textFil = null,
             Brand? brand = null,
             Sport? sport = null,
             Genre? genre = null,
@@ -35,10 +36,27 @@ namespace TP01EF2024.Datos.Interfaces
             Colour? colour = null,
             decimal? maximo = null,
             decimal? minimo = null);
+
         List<Size> GetSizesForShoe(int shoeId);
+
         void AgregarShoeSize(ShoeSize nuevaRelacion);
 
         ShoeSize? ExisteShoeSize(Shoe shoe, Size size);
+
         void ActualizarShoeSize(ShoeSize shoeSize);
+
+        List<ShoeDto> GetListaDto();
+
+        List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page,
+            int pageSize,
+            Orden? orden = null,
+            string? textFil = null,
+            Brand? brand = null,
+            Sport? sport = null,
+            Genre? genre = null,
+            Colour? colour = null,
+            decimal? maximo = null,
+            decimal? minimo = null);
+
     }
 }

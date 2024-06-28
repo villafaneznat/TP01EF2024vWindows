@@ -75,7 +75,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(912, 66);
+            panel1.Size = new Size(984, 66);
             panel1.TabIndex = 2;
             // 
             // ActualizarBtn
@@ -88,7 +88,7 @@
             ActualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ActualizarBtn.IconColor = Color.Black;
             ActualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ActualizarBtn.Location = new Point(242, 17);
+            ActualizarBtn.Location = new Point(313, 17);
             ActualizarBtn.Name = "ActualizarBtn";
             ActualizarBtn.Size = new Size(119, 29);
             ActualizarBtn.TabIndex = 6;
@@ -101,7 +101,7 @@
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Controls.Add(iconPictureBox1);
             panel4.Controls.Add(BuscarColorTxt);
-            panel4.Location = new Point(376, 17);
+            panel4.Location = new Point(447, 17);
             panel4.Name = "panel4";
             panel4.Size = new Size(364, 29);
             panel4.TabIndex = 1;
@@ -147,10 +147,10 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 446);
-            panel2.MaximumSize = new Size(740, 88);
-            panel2.MinimumSize = new Size(740, 88);
+            panel2.MaximumSize = new Size(812, 88);
+            panel2.MinimumSize = new Size(812, 88);
             panel2.Name = "panel2";
-            panel2.Size = new Size(740, 88);
+            panel2.Size = new Size(812, 88);
             panel2.TabIndex = 3;
             // 
             // PagPrimeraBtn
@@ -163,7 +163,7 @@
             PagPrimeraBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagPrimeraBtn.IconColor = Color.Black;
             PagPrimeraBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagPrimeraBtn.Location = new Point(258, 20);
+            PagPrimeraBtn.Location = new Point(307, 20);
             PagPrimeraBtn.Name = "PagPrimeraBtn";
             PagPrimeraBtn.Size = new Size(43, 30);
             PagPrimeraBtn.TabIndex = 9;
@@ -182,7 +182,7 @@
             PagUltimaBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagUltimaBtn.IconColor = Color.Black;
             PagUltimaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagUltimaBtn.Location = new Point(417, 20);
+            PagUltimaBtn.Location = new Point(466, 20);
             PagUltimaBtn.Name = "PagUltimaBtn";
             PagUltimaBtn.Size = new Size(43, 30);
             PagUltimaBtn.TabIndex = 8;
@@ -201,7 +201,7 @@
             PagSiguienteBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagSiguienteBtn.IconColor = Color.Black;
             PagSiguienteBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagSiguienteBtn.Location = new Point(378, 20);
+            PagSiguienteBtn.Location = new Point(427, 20);
             PagSiguienteBtn.Name = "PagSiguienteBtn";
             PagSiguienteBtn.Size = new Size(30, 30);
             PagSiguienteBtn.TabIndex = 7;
@@ -220,7 +220,7 @@
             PagAnteriorBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagAnteriorBtn.IconColor = Color.Black;
             PagAnteriorBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagAnteriorBtn.Location = new Point(311, 20);
+            PagAnteriorBtn.Location = new Point(360, 20);
             PagAnteriorBtn.Name = "PagAnteriorBtn";
             PagAnteriorBtn.Size = new Size(30, 30);
             PagAnteriorBtn.TabIndex = 6;
@@ -233,7 +233,7 @@
             // 
             CantidadColoresLbl.AutoSize = true;
             CantidadColoresLbl.ForeColor = Color.FromArgb(224, 224, 224);
-            CantidadColoresLbl.Location = new Point(698, 26);
+            CantidadColoresLbl.Location = new Point(755, 26);
             CantidadColoresLbl.Name = "CantidadColoresLbl";
             CantidadColoresLbl.Size = new Size(13, 15);
             CantidadColoresLbl.TabIndex = 5;
@@ -243,7 +243,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.FromArgb(224, 224, 224);
-            label2.Location = new Point(583, 25);
+            label2.Location = new Point(640, 25);
             label2.Name = "label2";
             label2.Size = new Size(115, 15);
             label2.TabIndex = 4;
@@ -297,7 +297,7 @@
             panel3.Controls.Add(EditarBtn);
             panel3.Controls.Add(NuevoColorBtn);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(740, 66);
+            panel3.Location = new Point(812, 66);
             panel3.MaximumSize = new Size(172, 500);
             panel3.MinimumSize = new Size(172, 500);
             panel3.Name = "panel3";
@@ -487,7 +487,7 @@
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
             DgvColours.RowsDefaultCellStyle = dataGridViewCellStyle5;
             DgvColours.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvColours.Size = new Size(740, 380);
+            DgvColours.Size = new Size(812, 380);
             DgvColours.TabIndex = 5;
             // 
             // ColourNameCol
@@ -502,14 +502,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 44, 44);
-            ClientSize = new Size(912, 534);
+            ClientSize = new Size(984, 534);
             ControlBox = false;
             Controls.Add(DgvColours);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MaximumSize = new Size(928, 550);
-            MinimumSize = new Size(928, 550);
+            MaximumSize = new Size(1000, 550);
+            MinimumSize = new Size(1000, 550);
             Name = "ColoursForm";
             Load += ColoursForm_Load;
             panel1.ResumeLayout(false);

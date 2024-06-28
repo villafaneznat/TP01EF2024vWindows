@@ -43,11 +43,11 @@
             // 
             label.AutoSize = true;
             label.BackColor = Color.Transparent;
-            label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label.ForeColor = Color.FromArgb(224, 224, 224);
-            label.Location = new Point(75, 70);
+            label.Location = new Point(59, 21);
             label.Name = "label";
-            label.Size = new Size(218, 21);
+            label.Size = new Size(202, 20);
             label.TabIndex = 10;
             label.Text = "Ingrese el nombre del color:";
             // 
@@ -56,11 +56,11 @@
             CancelarBtn.BackColor = Color.FromArgb(64, 64, 64);
             CancelarBtn.FlatAppearance.BorderSize = 0;
             CancelarBtn.FlatStyle = FlatStyle.Flat;
-            CancelarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CancelarBtn.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CancelarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            CancelarBtn.Location = new Point(203, 257);
+            CancelarBtn.Location = new Point(183, 107);
             CancelarBtn.Name = "CancelarBtn";
-            CancelarBtn.Size = new Size(113, 40);
+            CancelarBtn.Size = new Size(113, 29);
             CancelarBtn.TabIndex = 12;
             CancelarBtn.Text = "CANCELAR";
             CancelarBtn.UseVisualStyleBackColor = false;
@@ -71,11 +71,11 @@
             GuardarBtn.BackColor = Color.FromArgb(64, 64, 64);
             GuardarBtn.FlatAppearance.BorderSize = 0;
             GuardarBtn.FlatStyle = FlatStyle.Flat;
-            GuardarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GuardarBtn.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GuardarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            GuardarBtn.Location = new Point(47, 257);
+            GuardarBtn.Location = new Point(27, 107);
             GuardarBtn.Name = "GuardarBtn";
-            GuardarBtn.Size = new Size(113, 40);
+            GuardarBtn.Size = new Size(113, 29);
             GuardarBtn.TabIndex = 11;
             GuardarBtn.Text = "GUARDAR";
             GuardarBtn.UseVisualStyleBackColor = false;
@@ -85,7 +85,7 @@
             // 
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Controls.Add(ColorTxt);
-            panel4.Location = new Point(47, 145);
+            panel4.Location = new Point(27, 59);
             panel4.Name = "panel4";
             panel4.Size = new Size(269, 29);
             panel4.TabIndex = 13;
@@ -111,14 +111,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
-            ClientSize = new Size(377, 370);
+            ClientSize = new Size(323, 156);
             ControlBox = false;
             Controls.Add(panel4);
             Controls.Add(label);
             Controls.Add(CancelarBtn);
             Controls.Add(GuardarBtn);
-            MaximumSize = new Size(393, 386);
-            MinimumSize = new Size(393, 386);
+            MaximumSize = new Size(339, 172);
+            MinimumSize = new Size(339, 172);
             Name = "ColoursFormAE";
             StartPosition = FormStartPosition.CenterScreen;
             panel4.ResumeLayout(false);

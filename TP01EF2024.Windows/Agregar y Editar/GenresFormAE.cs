@@ -11,56 +11,53 @@ using TP01EF2024.Entidades;
 
 namespace TP01EF2024.Windows.Agregar_y_Editar
 {
-    public partial class SportsFormAE : Form
+    public partial class GenresFormAE : Form
     {
-        private Sport sport;
+        private Genre genre;
 
-        public SportsFormAE()
+        public GenresFormAE()
         {
             InitializeComponent();
         }
 
-        internal Sport GetSport()
+        internal Genre GetGenre()
         {
-            return sport;
+            return genre;
         }
 
-        internal void SetSport(Sport sport)
+        internal void SetGenre(Genre genre)
         {
-            this.sport = sport;
+            this.genre = genre;
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            if (sport != null)
+            if (genre != null)
             {
-                DeporteTxt.Text = sport.SportName;
+                GeneroTxt.Text = genre.GenreName;
             }
         }
-
 
         private void CancelarBtn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-
-        private void GuardarBtn_Click(object sender, EventArgs e)
+        private void IngresarBtn_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
             {
-                if (sport == null)
+                if (genre == null)
                 {
-                    sport = new Sport();
+                    genre = new Genre();
                 }
-                sport.SportName = DeporteTxt.Text;
+                genre.GenreName = GeneroTxt.Text;
 
                 DialogResult = DialogResult.OK;
             }
         }
-
 
         private bool ValidarDatos()
         {
@@ -68,23 +65,19 @@ namespace TP01EF2024.Windows.Agregar_y_Editar
 
             errorProvider.Clear();
 
-            if (string.IsNullOrEmpty(DeporteTxt.Text) || string.IsNullOrWhiteSpace(DeporteTxt.Text))
+            if (string.IsNullOrEmpty(GeneroTxt.Text) || string.IsNullOrWhiteSpace(GeneroTxt.Text))
             {
                 valido = false;
-                errorProvider.SetError(DeporteTxt, "La marca es requerida.");
+                errorProvider.SetError(GeneroTxt, "El género es requerido.");
             }
-            if (DeporteTxt.Text.Length > 20)
+            if (GeneroTxt.Text.Length > 10)
             {
                 valido = false;
-                errorProvider.SetError(DeporteTxt, "Sólo se permiten hasta 20 caracteres.");
+                errorProvider.SetError(GeneroTxt, "Sólo se permiten hasta 10 caracteres.");
             }
 
             return valido;
         }
-
-        private void label_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

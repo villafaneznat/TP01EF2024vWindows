@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TP01EF2024.Datos.Interfaces;
 using TP01EF2024.Entidades;
+using TP01EF2024.Entidades.Dtos;
 using TP01EF2024.Entidades.Enums;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -91,12 +92,54 @@ namespace TP01EF2024.Datos.Repositorios
                 shoe.Colour = colourExist;
             }
 
+            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoe.ShoeId);
+
+            if (shoeExist != null)
+            {
+                _context.Entry(shoeExist).State = EntityState.Detached;
+            }
+
             _context.Shoes.Update(shoe);
         }
 
         public void Eliminar(Shoe shoe)
         {
-            _context.Shoes.Remove(shoe);
+            var brandExist = _context.Brands.Local.FirstOrDefault(b => b.BrandId == shoe.BrandId);
+
+            if (brandExist != null)
+            {
+                _context.Entry(brandExist).State = EntityState.Detached;
+            }
+
+            var sportExist = _context.Sports.Local.FirstOrDefault(s => s.SportId == shoe.SportId);
+
+            if (sportExist != null)
+            {
+                _context.Entry(sportExist).State = EntityState.Detached;
+            }
+
+            var genreExist = _context.Genres.Local.FirstOrDefault(g => g.GenreId == shoe.GenreId);
+
+            if (genreExist != null)
+            {
+                _context.Entry(genreExist).State = EntityState.Detached;
+            }
+
+            var colourExist = _context.Colours.Local.FirstOrDefault(c => c.ColourId == shoe.ColourId);
+
+            if (colourExist != null)
+            {
+                _context.Entry(colourExist).State = EntityState.Detached;
+            }
+
+            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoe.ShoeId);
+
+            if (shoeExist != null)
+            {
+                _context.Entry(shoeExist).State = EntityState.Detached;
+            }
+
+            _context.Remove(shoe);
         }
 
         public bool EstaRelacionado(Shoe shoe)
@@ -112,13 +155,17 @@ namespace TP01EF2024.Datos.Repositorios
                                             && s.SportId == shoe.SportId 
                                             && s.GenreId == shoe.GenreId
                                             && s.ColourId == shoe.ColourId
-                                            && s.Model == shoe.Model);
+                                            && s.Model == shoe.Model
+                                            && s.Description == shoe.Description
+                                            && s.Price == shoe.Price);
             }
             return _context.Shoes.Any(s => s.BrandId == shoe.BrandId 
                                         && s.SportId == shoe.SportId 
                                         && s.GenreId == shoe.GenreId
                                         && s.ColourId == shoe.ColourId
                                         && s.Model == shoe.Model
+                                        && s.Description == shoe.Description
+                                        && s.Price == shoe.Price
                                         && s.ShoeId == shoe.ShoeId);
         }
 
@@ -129,6 +176,7 @@ namespace TP01EF2024.Datos.Repositorios
                 Include(s => s.Genre).
                 Include(s => s.Sport).
                 Include(s => s.Colour).
+                AsNoTracking().
                 SingleOrDefault(s => s.ShoeId == id);
         }
 
@@ -143,95 +191,31 @@ namespace TP01EF2024.Datos.Repositorios
                 AsNoTracking().ToList();
         }
 
+        public List<ShoeDto> GetListaDto()
+        {
+            return _context.Shoes
+                          .Include(p => p.Brand)
+                          .Include(p => p.Genre)
+                          .Include(p => p.Colour)
+                          .Include(p => p.Sport)
+                          .Select(n => new ShoeDto
+                          {
+                              ShoeId = n.ShoeId,
+                              Brand = n.Brand != null ? n.Brand.BrandName : string.Empty,
+                              Genre = n.Genre != null ? n.Genre.GenreName : string.Empty,
+                              Color = n.Colour != null ? n.Colour.ColourName : string.Empty,
+                              Sport = n.Sport != null ? n.Sport.SportName : string.Empty,
+                              Model = n.Model,
+                              Description = n.Description,
+                              Price = n.Price,
+                          })
+                          .ToList(); ;
+
+        }
+
         public int GetCantidad()
         {
             return _context.Shoes.Count();
-        }
-
-        public List<Shoe> GetListaPaginadaOrdenadaFiltrada(
-            bool paginar,
-            int page, 
-            int pageSize, 
-            Orden? orden = null, 
-            Brand? brand = null,
-            Sport? sport = null, 
-            Genre? genre = null, 
-            Colour? colour = null,
-            decimal? maximo = null, 
-            decimal? minimo = null)
-        {
-            IQueryable<Shoe> query = _context.Shoes
-                .Include(s => s.Brand)
-                .Include(s => s.Sport)
-                .Include(s => s.Genre)
-                .Include(s => s.Colour)
-                .AsNoTracking();
-
-            // FILTROS
-            if (brand != null)
-            {
-                query = query
-                    .Where(s => s.BrandId == brand.BrandId);
-            }
-            if (sport != null)
-            {
-                query = query
-                    .Where(s => s.SportId == sport.SportId);
-            }
-            if (genre != null)
-            {
-                query = query
-                    .Where(s => s.GenreId == genre.GenreId);
-            }
-            if (colour != null)
-            {
-                query = query
-                    .Where(s => s.ColourId == colour.ColourId);
-            }
-
-            //ORDEN
-            if (orden != null)
-            {
-                switch (orden)
-                {
-                    case Orden.AZ:
-                        query = query.OrderBy(s => s.Model);
-                        break;
-                    case Orden.ZA:
-                        query = query.OrderByDescending(s => s.Model);
-                        break;
-                    case Orden.MenorPrecio:
-                        query = query.OrderBy(s => s.Price);
-                        break;
-                    case Orden.MayorPrecio:
-                        query = query.OrderByDescending(s => s.Price);
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            //PRECIO
-            if (maximo != null && minimo != null)
-            {
-                query = query
-                    .Where(s => s.Price <= maximo)
-                    .Where(s => s.Price >= minimo);
-            }
-
-            //PAGINADO
-            if (paginar)
-            {
-                List<Shoe> listaPaginada = query.AsNoTracking()
-                .Skip(page * pageSize)//Saltea estos registros
-                .Take(pageSize)//Muestra estos
-                .ToList();
-                return listaPaginada;
-            }
-            else
-            {
-                return query.ToList();
-            }
         }
 
         public int GetCantidadFiltrada(Brand? brand = null,
@@ -280,6 +264,7 @@ namespace TP01EF2024.Datos.Repositorios
                 .Include(ss => ss.Size)
                 .Where(ss => ss.ShoeId == shoeId)
                 .Select(ss => ss.Size)
+                .AsNoTracking()
                 .ToList();
 
         }
@@ -299,6 +284,182 @@ namespace TP01EF2024.Datos.Repositorios
             _context.Set<ShoeSize>().Update(shoeSize);
         }
 
+        public List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(
+            int page,
+            int pageSize,
+            Orden? orden = null,
+            string? textFil = null,
+            Brand? brand = null,
+            Sport? sport = null,
+            Genre? genre = null,
+            Colour? colour = null,
+            decimal? maximo = null,
+            decimal? minimo = null)
+        {
+            IQueryable<Shoe> query = _context.Shoes
+                .Include(s => s.Brand)
+                .Include(s => s.Sport)
+                .Include(s => s.Genre)
+                .Include(s => s.Colour)
+                .AsNoTracking();
 
+            // FILTROS
+            if (brand != null)
+            {
+                query = query
+                    .Where(s => s.BrandId == brand.BrandId);
+            }
+            if (sport != null)
+            {
+                query = query
+                    .Where(s => s.SportId == sport.SportId);
+            }
+            if (genre != null)
+            {
+                query = query
+                    .Where(s => s.GenreId == genre.GenreId);
+            }
+            if (colour != null)
+            {
+                query = query
+                    .Where(s => s.ColourId == colour.ColourId);
+            }
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(s => s.Model.Contains(textFil));
+            }
+            //PRECIO
+            if (maximo != null && minimo != null)
+            {
+                query = query
+                    .Where(s => s.Price <= maximo)
+                    .Where(s => s.Price >= minimo);
+            }
+            //ORDEN
+            if (orden != null)
+            {
+                switch (orden)
+                {
+                    case Orden.AZ:
+                        query = query.OrderBy(s => s.Model);
+                        break;
+                    case Orden.ZA:
+                        query = query.OrderByDescending(s => s.Model);
+                        break;
+                    case Orden.MenorPrecio:
+                        query = query.OrderBy(s => s.Price);
+                        break;
+                    case Orden.MayorPrecio:
+                        query = query.OrderByDescending(s => s.Price);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            //PAGINADO
+            List<Shoe> listaPaginada = query.AsNoTracking()
+            .Skip(page * pageSize)//Saltea estos registros
+            .Take(pageSize)//Muestra estos
+            .ToList();
+            return listaPaginada;
+        }
+
+        public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(
+            int page, 
+            int pageSize,
+            Orden? orden = null,
+            string? textFil = null,
+            Brand? brand = null,
+            Sport? sport = null,
+            Genre? genre = null,
+            Colour? colour = null,
+            decimal? maximo = null,
+            decimal? minimo = null)
+        {
+            IQueryable<Shoe> query = _context.Shoes
+               .Include(s => s.Colour)
+               .Include(s => s.Genre)
+               .Include(s => s.Sport)
+               .Include(s => s.Brand)
+               .AsNoTracking();
+            // FILTROS
+            if (brand != null)
+            {
+                query = query
+                    .Where(s => s.BrandId == brand.BrandId);
+            }
+            if (sport != null)
+            {
+                query = query
+                    .Where(s => s.SportId == sport.SportId);
+            }
+            if (genre != null)
+            {
+                query = query
+                    .Where(s => s.GenreId == genre.GenreId);
+            }
+            if (colour != null)
+            {
+                query = query
+                    .Where(s => s.ColourId == colour.ColourId);
+            }
+            //TEXTO FILTRO
+            if (textFil != null)
+            {
+                query = query.Where(s => s.Model.Contains(textFil));
+            }
+            //PRECIO
+            if (maximo != null && minimo != null)
+            {
+                query = query
+                    .Where(s => s.Price <= maximo)
+                    .Where(s => s.Price >= minimo);
+            }
+            //ORDEN
+            if (orden != null)
+            {
+                switch (orden)
+                {
+                    case Orden.AZ:
+                        query = query.OrderBy(s => s.Model);
+                        break;
+                    case Orden.ZA:
+                        query = query.OrderByDescending(s => s.Model);
+                        break;
+                    case Orden.MenorPrecio:
+                        query = query.OrderBy(s => s.Price);
+                        break;
+                    case Orden.MayorPrecio:
+                        query = query.OrderByDescending(s => s.Price);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            //PAGINADO
+            List<Shoe> listaPaginada = query
+                .Skip(page * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            // Mapear los resultados a ShoeListDto
+            List<ShoeDto> listaDto = listaPaginada.Select(s => 
+                                                  new ShoeDto
+                                                  {
+                                                      ShoeId = s.ShoeId,
+                                                      Model = s.Model,
+                                                      Description = s.Description,
+                                                      Color = s.Colour?.ColourName ?? "",
+                                                      Genre = s.Genre?.GenreName ?? "",
+                                                      Sport = s.Sport?.SportName ?? "",
+                                                      Brand = s.Brand?.BrandName ?? "",
+                                                      Price = s.Price
+                                                  })
+                                                  .ToList();
+
+            return listaDto;
+
+        }
     }
 }

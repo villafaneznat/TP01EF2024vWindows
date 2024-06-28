@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             panel1 = new Panel();
             ActualizarBtn = new FontAwesome.Sharp.IconButton();
             panel4 = new Panel();
@@ -75,7 +75,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(912, 66);
+            panel1.Size = new Size(984, 66);
             panel1.TabIndex = 2;
             // 
             // ActualizarBtn
@@ -88,19 +88,20 @@
             ActualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ActualizarBtn.IconColor = Color.Black;
             ActualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ActualizarBtn.Location = new Point(242, 17);
+            ActualizarBtn.Location = new Point(312, 17);
             ActualizarBtn.Name = "ActualizarBtn";
             ActualizarBtn.Size = new Size(119, 29);
             ActualizarBtn.TabIndex = 6;
             ActualizarBtn.Text = "Actualizar";
             ActualizarBtn.UseVisualStyleBackColor = false;
+            ActualizarBtn.Click += ActualizarBtn_Click;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Controls.Add(iconPictureBox1);
             panel4.Controls.Add(BuscarGeneroTxt);
-            panel4.Location = new Point(376, 17);
+            panel4.Location = new Point(446, 17);
             panel4.Name = "panel4";
             panel4.Size = new Size(364, 29);
             panel4.TabIndex = 1;
@@ -130,6 +131,7 @@
             BuscarGeneroTxt.PlaceholderText = "Bucar Genero...";
             BuscarGeneroTxt.Size = new Size(285, 16);
             BuscarGeneroTxt.TabIndex = 0;
+            BuscarGeneroTxt.TextChanged += BuscarGeneroTxt_TextChanged;
             // 
             // panel3
             // 
@@ -139,7 +141,7 @@
             panel3.Controls.Add(EditarBtn);
             panel3.Controls.Add(NuevoGeneroBtn);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(740, 66);
+            panel3.Location = new Point(812, 66);
             panel3.MaximumSize = new Size(172, 500);
             panel3.MinimumSize = new Size(172, 500);
             panel3.Name = "panel3";
@@ -173,6 +175,7 @@
             OrderABtn.TabIndex = 5;
             OrderABtn.Text = "A - Z";
             OrderABtn.UseVisualStyleBackColor = false;
+            OrderABtn.Click += OrderABtn_Click;
             // 
             // iconButton1
             // 
@@ -211,6 +214,7 @@
             OrderZBtn.TabIndex = 4;
             OrderZBtn.Text = "Z - A";
             OrderZBtn.UseVisualStyleBackColor = false;
+            OrderZBtn.Click += OrderZBtn_Click;
             // 
             // BorrarBtn
             // 
@@ -228,6 +232,7 @@
             BorrarBtn.TabIndex = 2;
             BorrarBtn.Text = "Borrar";
             BorrarBtn.UseVisualStyleBackColor = false;
+            BorrarBtn.Click += BorrarBtn_Click;
             // 
             // EditarBtn
             // 
@@ -245,6 +250,7 @@
             EditarBtn.TabIndex = 1;
             EditarBtn.Text = "Editar";
             EditarBtn.UseVisualStyleBackColor = false;
+            EditarBtn.Click += EditarBtn_Click;
             // 
             // NuevoGeneroBtn
             // 
@@ -262,6 +268,7 @@
             NuevoGeneroBtn.TabIndex = 0;
             NuevoGeneroBtn.Text = "Nuevo Genero";
             NuevoGeneroBtn.UseVisualStyleBackColor = false;
+            NuevoGeneroBtn.Click += NuevoGeneroBtn_Click;
             // 
             // panel2
             // 
@@ -277,10 +284,10 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 446);
-            panel2.MaximumSize = new Size(740, 88);
-            panel2.MinimumSize = new Size(740, 88);
+            panel2.MaximumSize = new Size(812, 88);
+            panel2.MinimumSize = new Size(812, 88);
             panel2.Name = "panel2";
-            panel2.Size = new Size(740, 88);
+            panel2.Size = new Size(812, 88);
             panel2.TabIndex = 6;
             // 
             // PagPrimeraBtn
@@ -293,13 +300,14 @@
             PagPrimeraBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagPrimeraBtn.IconColor = Color.Black;
             PagPrimeraBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagPrimeraBtn.Location = new Point(258, 20);
+            PagPrimeraBtn.Location = new Point(301, 20);
             PagPrimeraBtn.Name = "PagPrimeraBtn";
             PagPrimeraBtn.Size = new Size(43, 30);
             PagPrimeraBtn.TabIndex = 9;
             PagPrimeraBtn.Text = "<<";
             PagPrimeraBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagPrimeraBtn.UseVisualStyleBackColor = false;
+            PagPrimeraBtn.Click += PagPrimeraBtn_Click;
             // 
             // PagUltimaBtn
             // 
@@ -311,13 +319,14 @@
             PagUltimaBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagUltimaBtn.IconColor = Color.Black;
             PagUltimaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagUltimaBtn.Location = new Point(417, 20);
+            PagUltimaBtn.Location = new Point(460, 20);
             PagUltimaBtn.Name = "PagUltimaBtn";
             PagUltimaBtn.Size = new Size(43, 30);
             PagUltimaBtn.TabIndex = 8;
             PagUltimaBtn.Text = ">>";
             PagUltimaBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagUltimaBtn.UseVisualStyleBackColor = false;
+            PagUltimaBtn.Click += PagUltimaBtn_Click;
             // 
             // PagSiguienteBtn
             // 
@@ -329,13 +338,14 @@
             PagSiguienteBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagSiguienteBtn.IconColor = Color.Black;
             PagSiguienteBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagSiguienteBtn.Location = new Point(378, 20);
+            PagSiguienteBtn.Location = new Point(421, 20);
             PagSiguienteBtn.Name = "PagSiguienteBtn";
             PagSiguienteBtn.Size = new Size(30, 30);
             PagSiguienteBtn.TabIndex = 7;
             PagSiguienteBtn.Text = ">";
             PagSiguienteBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagSiguienteBtn.UseVisualStyleBackColor = false;
+            PagSiguienteBtn.Click += PagSiguienteBtn_Click;
             // 
             // PagAnteriorBtn
             // 
@@ -347,19 +357,20 @@
             PagAnteriorBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagAnteriorBtn.IconColor = Color.Black;
             PagAnteriorBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagAnteriorBtn.Location = new Point(311, 20);
+            PagAnteriorBtn.Location = new Point(354, 20);
             PagAnteriorBtn.Name = "PagAnteriorBtn";
             PagAnteriorBtn.Size = new Size(30, 30);
             PagAnteriorBtn.TabIndex = 6;
             PagAnteriorBtn.Text = "<";
             PagAnteriorBtn.TextImageRelation = TextImageRelation.TextAboveImage;
             PagAnteriorBtn.UseVisualStyleBackColor = false;
+            PagAnteriorBtn.Click += PagAnteriorBtn_Click;
             // 
             // CantidadGenerosLbl
             // 
             CantidadGenerosLbl.AutoSize = true;
             CantidadGenerosLbl.ForeColor = Color.FromArgb(224, 224, 224);
-            CantidadGenerosLbl.Location = new Point(698, 26);
+            CantidadGenerosLbl.Location = new Point(755, 26);
             CantidadGenerosLbl.Name = "CantidadGenerosLbl";
             CantidadGenerosLbl.Size = new Size(13, 15);
             CantidadGenerosLbl.TabIndex = 5;
@@ -369,7 +380,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.FromArgb(224, 224, 224);
-            label2.Location = new Point(578, 25);
+            label2.Location = new Point(635, 25);
             label2.Name = "label2";
             label2.Size = new Size(119, 15);
             label2.TabIndex = 4;
@@ -419,36 +430,38 @@
             // 
             DgvGenres.AllowUserToAddRows = false;
             DgvGenres.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle1.Padding = new Padding(10);
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(37, 212, 102);
-            DgvGenres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            DgvGenres.AllowUserToOrderColumns = true;
+            DgvGenres.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle6.Padding = new Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(37, 212, 102);
+            DgvGenres.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             DgvGenres.BackgroundColor = Color.FromArgb(44, 44, 44);
             DgvGenres.BorderStyle = BorderStyle.None;
             DgvGenres.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             DgvGenres.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            DgvGenres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            DgvGenres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             DgvGenres.ColumnHeadersHeight = 50;
             DgvGenres.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DgvGenres.Columns.AddRange(new DataGridViewColumn[] { GentreNameCol });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.ControlDarkDark;
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            DgvGenres.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.ControlDarkDark;
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            DgvGenres.DefaultCellStyle = dataGridViewCellStyle8;
             DgvGenres.Dock = DockStyle.Fill;
             DgvGenres.EnableHeadersVisualStyles = false;
             DgvGenres.Location = new Point(0, 66);
@@ -457,26 +470,26 @@
             DgvGenres.Name = "DgvGenres";
             DgvGenres.ReadOnly = true;
             DgvGenres.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle4.Padding = new Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(32, 32, 32);
-            dataGridViewCellStyle4.SelectionForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            DgvGenres.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle9.Padding = new Padding(5);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(32, 32, 32);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            DgvGenres.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             DgvGenres.RowHeadersWidth = 30;
             DgvGenres.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle5.ForeColor = Color.FromArgb(224, 224, 224);
-            dataGridViewCellStyle5.Padding = new Padding(10);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(44, 44, 44);
-            dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
-            DgvGenres.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.ForeColor = Color.FromArgb(224, 224, 224);
+            dataGridViewCellStyle10.Padding = new Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(44, 44, 44);
+            dataGridViewCellStyle10.SelectionForeColor = Color.FromArgb(37, 211, 102);
+            DgvGenres.RowsDefaultCellStyle = dataGridViewCellStyle10;
             DgvGenres.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvGenres.Size = new Size(740, 380);
+            DgvGenres.Size = new Size(812, 380);
             DgvGenres.TabIndex = 7;
             // 
             // GentreNameCol
@@ -491,15 +504,16 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 44, 44);
-            ClientSize = new Size(912, 534);
+            ClientSize = new Size(984, 534);
             ControlBox = false;
             Controls.Add(DgvGenres);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
-            MaximumSize = new Size(928, 550);
-            MinimumSize = new Size(928, 550);
+            MaximumSize = new Size(1000, 550);
+            MinimumSize = new Size(1000, 550);
             Name = "GenresForm";
+            Load += GenresForm_Load;
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();

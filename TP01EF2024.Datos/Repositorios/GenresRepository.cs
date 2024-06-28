@@ -55,7 +55,7 @@ namespace TP01EF2024.Datos.Repositorios
 
         public List<Genre> GetGenres()
         {
-            return _context.Genres.OrderBy(g => g.GenreId).AsNoTracking().ToList();
+            return _context.Genres.AsNoTracking().ToList();
         }
 
         public int GetCantidad()

@@ -57,7 +57,6 @@
             OrderZBtn = new FontAwesome.Sharp.IconButton();
             BorrarMarcaBtn = new FontAwesome.Sharp.IconButton();
             EditarMarcaBtn = new FontAwesome.Sharp.IconButton();
-            panel7 = new Panel();
             DgvBrands = new DataGridView();
             BrandNameCol = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
@@ -66,7 +65,6 @@
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel5.SuspendLayout();
-            panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvBrands).BeginInit();
             SuspendLayout();
             // 
@@ -77,7 +75,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(912, 66);
+            panel1.Size = new Size(984, 66);
             panel1.TabIndex = 0;
             // 
             // ActualizarBtn
@@ -90,7 +88,7 @@
             ActualizarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             ActualizarBtn.IconColor = Color.Black;
             ActualizarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            ActualizarBtn.Location = new Point(242, 17);
+            ActualizarBtn.Location = new Point(314, 17);
             ActualizarBtn.Name = "ActualizarBtn";
             ActualizarBtn.Size = new Size(119, 29);
             ActualizarBtn.TabIndex = 6;
@@ -103,7 +101,7 @@
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Controls.Add(iconPictureBox1);
             panel4.Controls.Add(BuscarMarcaTxt);
-            panel4.Location = new Point(376, 17);
+            panel4.Location = new Point(448, 17);
             panel4.Name = "panel4";
             panel4.Size = new Size(364, 29);
             panel4.TabIndex = 1;
@@ -149,10 +147,10 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 446);
-            panel2.MaximumSize = new Size(740, 88);
+            panel2.MaximumSize = new Size(812, 88);
             panel2.MinimumSize = new Size(740, 88);
             panel2.Name = "panel2";
-            panel2.Size = new Size(740, 88);
+            panel2.Size = new Size(812, 88);
             panel2.TabIndex = 1;
             // 
             // PagPrimeraBtn
@@ -165,7 +163,7 @@
             PagPrimeraBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagPrimeraBtn.IconColor = Color.Black;
             PagPrimeraBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagPrimeraBtn.Location = new Point(258, 20);
+            PagPrimeraBtn.Location = new Point(303, 20);
             PagPrimeraBtn.Name = "PagPrimeraBtn";
             PagPrimeraBtn.Size = new Size(43, 30);
             PagPrimeraBtn.TabIndex = 9;
@@ -184,7 +182,7 @@
             PagUltimaBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagUltimaBtn.IconColor = Color.Black;
             PagUltimaBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagUltimaBtn.Location = new Point(417, 20);
+            PagUltimaBtn.Location = new Point(462, 20);
             PagUltimaBtn.Name = "PagUltimaBtn";
             PagUltimaBtn.Size = new Size(43, 30);
             PagUltimaBtn.TabIndex = 8;
@@ -203,7 +201,7 @@
             PagSiguienteBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagSiguienteBtn.IconColor = Color.Black;
             PagSiguienteBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagSiguienteBtn.Location = new Point(378, 20);
+            PagSiguienteBtn.Location = new Point(423, 20);
             PagSiguienteBtn.Name = "PagSiguienteBtn";
             PagSiguienteBtn.Size = new Size(30, 30);
             PagSiguienteBtn.TabIndex = 7;
@@ -222,7 +220,7 @@
             PagAnteriorBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             PagAnteriorBtn.IconColor = Color.Black;
             PagAnteriorBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            PagAnteriorBtn.Location = new Point(311, 20);
+            PagAnteriorBtn.Location = new Point(356, 20);
             PagAnteriorBtn.Name = "PagAnteriorBtn";
             PagAnteriorBtn.Size = new Size(30, 30);
             PagAnteriorBtn.TabIndex = 6;
@@ -235,7 +233,7 @@
             // 
             CantidadMarcasLbl.AutoSize = true;
             CantidadMarcasLbl.ForeColor = Color.FromArgb(224, 224, 224);
-            CantidadMarcasLbl.Location = new Point(698, 26);
+            CantidadMarcasLbl.Location = new Point(752, 26);
             CantidadMarcasLbl.Name = "CantidadMarcasLbl";
             CantidadMarcasLbl.Size = new Size(13, 15);
             CantidadMarcasLbl.TabIndex = 5;
@@ -245,7 +243,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.FromArgb(224, 224, 224);
-            label2.Location = new Point(583, 25);
+            label2.Location = new Point(637, 25);
             label2.Name = "label2";
             label2.Size = new Size(115, 15);
             label2.TabIndex = 4;
@@ -317,7 +315,7 @@
             panel3.Controls.Add(EditarMarcaBtn);
             panel3.Controls.Add(NuevaMarcaBtn);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(740, 66);
+            panel3.Location = new Point(812, 66);
             panel3.MaximumSize = new Size(172, 500);
             panel3.MinimumSize = new Size(172, 500);
             panel3.Name = "panel3";
@@ -428,18 +426,11 @@
             EditarMarcaBtn.UseVisualStyleBackColor = false;
             EditarMarcaBtn.Click += EditarMarcaBtn_Click;
             // 
-            // panel7
-            // 
-            panel7.Controls.Add(DgvBrands);
-            panel7.Location = new Point(0, 66);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(740, 380);
-            panel7.TabIndex = 11;
-            // 
             // DgvBrands
             // 
             DgvBrands.AllowUserToAddRows = false;
             DgvBrands.AllowUserToDeleteRows = false;
+            DgvBrands.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(44, 44, 44);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(224, 224, 224);
@@ -472,7 +463,7 @@
             DgvBrands.DefaultCellStyle = dataGridViewCellStyle3;
             DgvBrands.Dock = DockStyle.Fill;
             DgvBrands.EnableHeadersVisualStyles = false;
-            DgvBrands.Location = new Point(0, 0);
+            DgvBrands.Location = new Point(0, 66);
             DgvBrands.Margin = new Padding(10);
             DgvBrands.MultiSelect = false;
             DgvBrands.Name = "DgvBrands";
@@ -497,7 +488,7 @@
             dataGridViewCellStyle5.SelectionForeColor = Color.FromArgb(37, 211, 102);
             DgvBrands.RowsDefaultCellStyle = dataGridViewCellStyle5;
             DgvBrands.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgvBrands.Size = new Size(740, 380);
+            DgvBrands.Size = new Size(812, 380);
             DgvBrands.TabIndex = 2;
             // 
             // BrandNameCol
@@ -512,14 +503,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 44, 44);
-            ClientSize = new Size(912, 534);
+            ClientSize = new Size(984, 534);
             ControlBox = false;
-            Controls.Add(panel7);
+            Controls.Add(DgvBrands);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            MaximumSize = new Size(928, 550);
-            MinimumSize = new Size(928, 550);
+            MaximumSize = new Size(1000, 550);
+            MinimumSize = new Size(1000, 550);
             Name = "BrandsForm";
             Load += BrandsForm_Load;
             panel1.ResumeLayout(false);
@@ -530,7 +521,6 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DgvBrands).EndInit();
             ResumeLayout(false);
         }
@@ -563,6 +553,5 @@
         private FontAwesome.Sharp.IconButton ActualizarBtn;
         private DataGridView DgvBrands;
         private DataGridViewTextBoxColumn BrandNameCol;
-        private Panel panel7;
     }
 }

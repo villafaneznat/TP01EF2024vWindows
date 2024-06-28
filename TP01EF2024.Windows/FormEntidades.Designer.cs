@@ -36,7 +36,10 @@
             MarcasBtn = new FontAwesome.Sharp.IconButton();
             ZapatosBtn = new FontAwesome.Sharp.IconButton();
             PanelForm = new Panel();
+            label1 = new Label();
+            label = new Label();
             panelMenu.SuspendLayout();
+            PanelForm.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu
@@ -51,7 +54,7 @@
             panelMenu.Dock = DockStyle.Top;
             panelMenu.Location = new Point(0, 0);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(928, 74);
+            panelMenu.Size = new Size(984, 74);
             panelMenu.TabIndex = 0;
             // 
             // BackBtn
@@ -61,11 +64,11 @@
             BackBtn.FlatStyle = FlatStyle.Flat;
             BackBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BackBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            BackBtn.IconChar = FontAwesome.Sharp.IconChar.RightFromBracket;
+            BackBtn.IconChar = FontAwesome.Sharp.IconChar.UpRightFromSquare;
             BackBtn.IconColor = Color.FromArgb(37, 211, 102);
             BackBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BackBtn.IconSize = 38;
-            BackBtn.Location = new Point(869, 0);
+            BackBtn.Location = new Point(925, 0);
             BackBtn.Name = "BackBtn";
             BackBtn.Padding = new Padding(10, 5, 10, 0);
             BackBtn.Size = new Size(59, 74);
@@ -186,29 +189,57 @@
             // 
             // PanelForm
             // 
+            PanelForm.Controls.Add(label1);
+            PanelForm.Controls.Add(label);
             PanelForm.Dock = DockStyle.Fill;
             PanelForm.Location = new Point(0, 74);
-            PanelForm.MaximumSize = new Size(928, 550);
+            PanelForm.MaximumSize = new Size(1000, 550);
             PanelForm.MinimumSize = new Size(928, 550);
             PanelForm.Name = "PanelForm";
-            PanelForm.Size = new Size(928, 550);
+            PanelForm.Size = new Size(984, 550);
             PanelForm.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(224, 224, 224);
+            label1.Location = new Point(290, 292);
+            label1.Name = "label1";
+            label1.Size = new Size(328, 28);
+            label1.TabIndex = 2;
+            label1.Text = "Trabajo Práctico de Nataly Villafañez";
+            // 
+            // label
+            // 
+            label.AutoSize = true;
+            label.BackColor = Color.Transparent;
+            label.Font = new Font("Segoe UI Semibold", 50F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.ForeColor = Color.FromArgb(37, 211, 102);
+            label.Location = new Point(255, 203);
+            label.Name = "label";
+            label.Size = new Size(397, 89);
+            label.TabIndex = 1;
+            label.Text = "TP01EF2024";
             // 
             // FormEntidades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(44, 44, 44);
-            ClientSize = new Size(928, 624);
+            ClientSize = new Size(984, 624);
             ControlBox = false;
             Controls.Add(PanelForm);
             Controls.Add(panelMenu);
-            MaximumSize = new Size(944, 640);
-            MinimumSize = new Size(944, 640);
+            MaximumSize = new Size(1000, 640);
+            MinimumSize = new Size(1000, 640);
             Name = "FormEntidades";
             StartPosition = FormStartPosition.CenterScreen;
             Load += FormEntidades_Load;
             panelMenu.ResumeLayout(false);
+            PanelForm.ResumeLayout(false);
+            PanelForm.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -222,5 +253,7 @@
         private FontAwesome.Sharp.IconButton ColoresBtn;
         private FontAwesome.Sharp.IconButton BackBtn;
         private Panel PanelForm;
+        private Label label;
+        private Label label1;
     }
 }

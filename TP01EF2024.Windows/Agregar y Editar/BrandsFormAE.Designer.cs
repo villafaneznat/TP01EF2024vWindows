@@ -43,11 +43,11 @@
             // 
             label.AutoSize = true;
             label.BackColor = Color.Transparent;
-            label.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label.ForeColor = Color.FromArgb(224, 224, 224);
-            label.Location = new Point(68, 90);
+            label.Location = new Point(48, 21);
             label.Name = "label";
-            label.Size = new Size(235, 21);
+            label.Size = new Size(220, 20);
             label.TabIndex = 1;
             label.Text = "Ingrese el nombre de la marca:";
             // 
@@ -55,7 +55,7 @@
             // 
             panel4.BackColor = Color.FromArgb(64, 64, 64);
             panel4.Controls.Add(MarcaTxt);
-            panel4.Location = new Point(51, 151);
+            panel4.Location = new Point(26, 56);
             panel4.Name = "panel4";
             panel4.Size = new Size(269, 29);
             panel4.TabIndex = 2;
@@ -77,11 +77,11 @@
             IngresarBtn.BackColor = Color.FromArgb(64, 64, 64);
             IngresarBtn.FlatAppearance.BorderSize = 0;
             IngresarBtn.FlatStyle = FlatStyle.Flat;
-            IngresarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            IngresarBtn.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             IngresarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            IngresarBtn.Location = new Point(51, 252);
+            IngresarBtn.Location = new Point(26, 104);
             IngresarBtn.Name = "IngresarBtn";
-            IngresarBtn.Size = new Size(113, 40);
+            IngresarBtn.Size = new Size(113, 29);
             IngresarBtn.TabIndex = 3;
             IngresarBtn.Text = "GUARDAR";
             IngresarBtn.UseVisualStyleBackColor = false;
@@ -92,11 +92,11 @@
             CancelarBtn.BackColor = Color.FromArgb(64, 64, 64);
             CancelarBtn.FlatAppearance.BorderSize = 0;
             CancelarBtn.FlatStyle = FlatStyle.Flat;
-            CancelarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CancelarBtn.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CancelarBtn.ForeColor = Color.FromArgb(224, 224, 224);
-            CancelarBtn.Location = new Point(207, 252);
+            CancelarBtn.Location = new Point(182, 104);
             CancelarBtn.Name = "CancelarBtn";
-            CancelarBtn.Size = new Size(113, 40);
+            CancelarBtn.Size = new Size(113, 29);
             CancelarBtn.TabIndex = 4;
             CancelarBtn.Text = "CANCELAR";
             CancelarBtn.UseVisualStyleBackColor = false;
@@ -111,14 +111,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(32, 32, 32);
-            ClientSize = new Size(377, 393);
+            ClientSize = new Size(323, 156);
             ControlBox = false;
             Controls.Add(CancelarBtn);
             Controls.Add(IngresarBtn);
             Controls.Add(panel4);
             Controls.Add(label);
-            MaximumSize = new Size(393, 409);
-            MinimumSize = new Size(393, 409);
+            MaximumSize = new Size(339, 172);
+            MinimumSize = new Size(339, 172);
             Name = "BrandsFormAE";
             StartPosition = FormStartPosition.CenterScreen;
             panel4.ResumeLayout(false);

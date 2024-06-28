@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TP01EF2024.Datos.Interfaces;
 using TP01EF2024.Entidades;
+using TP01EF2024.Entidades.Dtos;
 using TP01EF2024.Entidades.Enums;
 using TP01EF2024.Servicios.Interfaces;
 
@@ -119,9 +120,9 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<Shoe> GetListaPaginadaOrdenadaFiltrada(bool paginar, int page, int pageSize, Orden? orden = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
+        public List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
         {
-            return _repository.GetListaPaginadaOrdenadaFiltrada(paginar, page,pageSize,orden,brand,sport,genre,colour,maximo,minimo);
+            return _repository.GetListaShoesPaginadaOrdenadaFiltrada(page,pageSize,orden,textFil, brand,sport,genre,colour,maximo,minimo);
         }
 
         public int GetCantidadFiltrada(Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
@@ -193,6 +194,24 @@ namespace TP01EF2024.Servicios.Servicios
             {
                 throw new ArgumentException();
             }
+        }
+
+        public List<ShoeDto> GetListaDto()
+        {
+            try
+            {
+                return _repository.GetListaDto();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
+        {
+            return _repository.GetListaShoesDtosPaginadaOrdenadaFiltrada(page, pageSize, orden, textFil, brand, sport, genre, colour, maximo, minimo);
         }
     }
 }
