@@ -155,9 +155,10 @@
             BuscarZapatoTxt.ForeColor = Color.FromArgb(224, 224, 224);
             BuscarZapatoTxt.Location = new Point(37, 6);
             BuscarZapatoTxt.Name = "BuscarZapatoTxt";
-            BuscarZapatoTxt.PlaceholderText = "Buscar Zapato...";
+            BuscarZapatoTxt.PlaceholderText = "Buscar zapato por modelo...";
             BuscarZapatoTxt.Size = new Size(285, 16);
             BuscarZapatoTxt.TabIndex = 0;
+            BuscarZapatoTxt.TextChanged += BuscarZapatoTxt_TextChanged;
             // 
             // panel3
             // 
@@ -295,6 +296,7 @@
             VerDetallesBtn.TabIndex = 6;
             VerDetallesBtn.Text = "Ver Detalles";
             VerDetallesBtn.UseVisualStyleBackColor = false;
+            VerDetallesBtn.Click += VerDetallesBtn_Click;
             // 
             // BorrarZapatoBtn
             // 

@@ -143,48 +143,49 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public void AsignarTalle(Shoe shoe, Size size, int stock)
-        {
-            try
-            {
-                _unitOfWork.BeginTransaction();
+        //public void AsignarTalle(Shoe shoe, Size size, int stock)
+        //{
+        //    try
+        //    {
+        //        _unitOfWork.BeginTransaction();
 
-                //Busco si ya existe la asociación entre size y shoe, si existe, obtengo la relación
-                var shoeSize = _repository.ExisteShoeSize(shoe, size);
+        //        //Busco si ya existe la asociación entre size y shoe, si existe, obtengo la relación
+        //        var shoeSize = _repository.GetShoeSize(shoe, size);
 
-                if (shoeSize != null)
-                {
-                    shoeSize.QuantityInStock += stock;
-                    _repository.ActualizarShoeSize(shoeSize);
+        //        if (shoeSize != null)
+        //        {
+        //            shoeSize.QuantityInStock += stock;
 
-                }
-                else
-                {
-                    // Si no existe, creo una nueva relación
+        //            _repository.ActualizarShoeSize(shoeSize);
 
-                    ShoeSize nuevaRelacion = new ShoeSize()
-                    {
-                        Shoe = shoe,
-                        Size = size,
-                        QuantityInStock = stock
+        //        }
+        //        else
+        //        {
+        //            // Si no existe, creo una nueva relación
 
-                    };
+        //            ShoeSize nuevaRelacion = new ShoeSize()
+        //            {
+        //                Shoe = shoe,
+        //                Size = size,
+        //                QuantityInStock = stock
 
-                    _repository.AgregarShoeSize(nuevaRelacion);
+        //            };
+        //            _repository.AgregarShoeSize(nuevaRelacion);
 
-                }
-                _unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                _unitOfWork.RollBack();
-                throw;
-            }
-        }
+
+        //        }
+        //        _unitOfWork.Commit();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        _unitOfWork.RollBack();
+        //        throw;
+        //    }
+        //}
 
         public int GetStockShoeSize(Shoe shoe, Size size)
         {
-            var shoeSize = _repository.ExisteShoeSize(shoe, size);
+            var shoeSize = _repository.GetShoeSize(shoe, size);
             
             if (shoeSize != null)
             {
@@ -212,6 +213,74 @@ namespace TP01EF2024.Servicios.Servicios
         public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
         {
             return _repository.GetListaShoesDtosPaginadaOrdenadaFiltrada(page, pageSize, orden, textFil, brand, sport, genre, colour, maximo, minimo);
+        }
+
+        public ShoeSize? GetShoeSize(Shoe shoe, Size size)
+        {
+            try
+            {
+                return _repository.GetShoeSize(shoe, size);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public void AgregarShoeSize(ShoeSize nuevaRelacion)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+                _repository.AgregarShoeSize(nuevaRelacion);
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                _unitOfWork.RollBack();
+                throw;
+            }
+        }
+
+        public bool ExisteShoeSize(ShoeSize shoesize)
+        {
+            return _repository.ExisteShoeSize(shoesize);
+        }
+
+        public void EliminarShoeSize(ShoeSize shoeSize)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+                _repository.EliminarShoeSize(shoeSize);
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                _unitOfWork.RollBack();
+                throw;
+            }
+        }
+
+        public void ActualizarShoeSize(ShoeSize shoesize)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+                _repository.ActualizarShoeSize(shoesize);
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                _unitOfWork.RollBack();
+                throw;
+            }
+        }
+
+        public List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe)
+        {
+            return _repository.GetShoesSizesPaginados(page, pageSize, shoe);
         }
     }
 }

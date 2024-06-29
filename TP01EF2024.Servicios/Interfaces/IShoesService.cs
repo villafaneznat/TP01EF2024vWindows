@@ -18,6 +18,10 @@ namespace TP01EF2024.Servicios.Interfaces
         int GetCantidad();
         Shoe GetShoePorId(int id);
         bool EstaRelacionado(Shoe shoe);
+        ShoeSize? GetShoeSize(Shoe shoe, Size size);
+        bool ExisteShoeSize(ShoeSize shoesize);
+
+        void AgregarShoeSize(ShoeSize nuevaRelacion);
         List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(
             int page,
             int pageSize,
@@ -38,8 +42,6 @@ namespace TP01EF2024.Servicios.Interfaces
 
         List<Size> GetSizesForShoe(int shoeId);
 
-        void AsignarTalle(Shoe shoe, Size size, int stock);
-
         int GetStockShoeSize(Shoe shoe, Size size);
 
         List<ShoeDto> GetListaDto();
@@ -55,7 +57,9 @@ namespace TP01EF2024.Servicios.Interfaces
             Colour? colour = null,
             decimal? maximo = null,
             decimal? minimo = null);
+        void EliminarShoeSize(ShoeSize shoeSize);
+        void ActualizarShoeSize(ShoeSize shoesize);
 
-
+        List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe);
     }
 }

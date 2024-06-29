@@ -62,6 +62,11 @@ namespace TP01EF2024.Windows.Helpers
                     r.Cells[5].Value = shoe.Genre.GenreName;
                     r.Cells[6].Value = shoe.Price;
                     break;
+                case ShoeSize shoeSize:
+                    r.Cells[0].Value = shoeSize.Size.SizeNumber;
+                    r.Cells[1].Value = shoeSize.QuantityInStock;
+                    break;
+
                 default:
                     break;
 

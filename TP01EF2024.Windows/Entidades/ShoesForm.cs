@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using TP01EF2024.Windows.Helpers;
 using TP01EF2024.Windows.Agregar_y_Editar;
 using TP01EF2024.Entidades.Dtos;
+using TP01EF2024.Windows.Detalles;
 
 namespace TP01EF2024.Windows.Entidades
 {
@@ -47,7 +48,7 @@ namespace TP01EF2024.Windows.Entidades
         private void ShoesForm_Load(object sender, EventArgs e)
         {
             //shoes = _servicio.GetListaPaginadaOrdenadaFiltrada(pageNum, pageSize, orden);
-            shoesDtos = _servicio.GetListaShoesDtosPaginadaOrdenadaFiltrada(pageNum,pageSize,orden);
+            shoesDtos = _servicio.GetListaShoesDtosPaginadaOrdenadaFiltrada(pageNum, pageSize, orden);
             SeleccionarLista();
             RecargarGrilla(shoesDtos, cantidadRegistros);
 
@@ -288,6 +289,27 @@ namespace TP01EF2024.Windows.Entidades
 
             }
 
+        }
+
+        private void BuscarZapatoTxt_TextChanged(object sender, EventArgs e)
+        {
+            SeleccionarLista();
+            RecargarGrilla(shoesDtos, cantidadRegistros);
+        }
+
+        private void VerDetallesBtn_Click(object sender, EventArgs e)
+        {
+            if (DgvShoes.SelectedRows.Count == 0) { return; }
+
+            var r = DgvShoes.SelectedRows[0];
+
+            ShoeDto shoeDto = (ShoeDto)r.Tag;
+
+            Shoe shoe = _servicio.GetShoePorId(shoeDto.ShoeId);
+
+            ShoesFormDetalles frm = new ShoesFormDetalles(shoe, _servicio);
+
+            frm.Show();
         }
     }
 }

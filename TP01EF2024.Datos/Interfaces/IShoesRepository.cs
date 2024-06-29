@@ -41,7 +41,7 @@ namespace TP01EF2024.Datos.Interfaces
 
         void AgregarShoeSize(ShoeSize nuevaRelacion);
 
-        ShoeSize? ExisteShoeSize(Shoe shoe, Size size);
+        ShoeSize? GetShoeSize(Shoe shoe, Size size);
 
         void ActualizarShoeSize(ShoeSize shoeSize);
 
@@ -57,6 +57,9 @@ namespace TP01EF2024.Datos.Interfaces
             Colour? colour = null,
             decimal? maximo = null,
             decimal? minimo = null);
+        bool ExisteShoeSize(ShoeSize shoesize);
+        void EliminarShoeSize(ShoeSize shoeSize);
 
+        List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe);
     }
 }
