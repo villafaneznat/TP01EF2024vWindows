@@ -24,6 +24,29 @@ namespace TP01EF2024.Servicios.Servicios
             _repository = repository;
             _unitOfWork = unitOfWork;
         }
+        public void Guardar(Shoe shoe)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+
+                if (shoe.ShoeId == 0)
+                {
+                    _repository.Agregar(shoe);
+                }
+                else
+                {
+                    _repository.Editar(shoe);
+                }
+
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                _unitOfWork.RollBack();
+                throw;
+            }
+        }
 
         public void Eliminar(Shoe shoe)
         {
@@ -91,112 +114,6 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public int GetCantidad()
-        {
-            return _repository.GetCantidad();
-        }
-
-        public void Guardar(Shoe shoe)
-        {
-            try
-            {
-                _unitOfWork.BeginTransaction();
-
-                if (shoe.ShoeId == 0)
-                {
-                    _repository.Agregar(shoe);
-                }
-                else
-                {
-                    _repository.Editar(shoe);
-                }
-
-                _unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                _unitOfWork.RollBack();
-                throw;
-            }
-        }
-
-        public List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
-        {
-            return _repository.GetListaShoesPaginadaOrdenadaFiltrada(page,pageSize,orden,textFil, brand,sport,genre,colour,maximo,minimo);
-        }
-
-        public int GetCantidadFiltrada(Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
-        {
-            return _repository.GetCantidadFiltrada(brand, sport, genre, colour, maximo, minimo);
-        }
-
-        public List<Size> GetSizesForShoe(int shoeId)
-        {
-            try
-            {
-                return _repository.GetSizesForShoe(shoeId);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        //public void AsignarTalle(Shoe shoe, Size size, int stock)
-        //{
-        //    try
-        //    {
-        //        _unitOfWork.BeginTransaction();
-
-        //        //Busco si ya existe la asociación entre size y shoe, si existe, obtengo la relación
-        //        var shoeSize = _repository.GetShoeSize(shoe, size);
-
-        //        if (shoeSize != null)
-        //        {
-        //            shoeSize.QuantityInStock += stock;
-
-        //            _repository.ActualizarShoeSize(shoeSize);
-
-        //        }
-        //        else
-        //        {
-        //            // Si no existe, creo una nueva relación
-
-        //            ShoeSize nuevaRelacion = new ShoeSize()
-        //            {
-        //                Shoe = shoe,
-        //                Size = size,
-        //                QuantityInStock = stock
-
-        //            };
-        //            _repository.AgregarShoeSize(nuevaRelacion);
-
-
-        //        }
-        //        _unitOfWork.Commit();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        _unitOfWork.RollBack();
-        //        throw;
-        //    }
-        //}
-
-        public int GetStockShoeSize(Shoe shoe, Size size)
-        {
-            var shoeSize = _repository.GetShoeSize(shoe, size);
-            
-            if (shoeSize != null)
-            {
-                return shoeSize.QuantityInStock;
-            }
-            else
-            {
-                throw new ArgumentException();
-            }
-        }
-
         public List<ShoeDto> GetListaDto()
         {
             try
@@ -210,22 +127,24 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
-        public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
+        public int GetCantidad()
         {
-            return _repository.GetListaShoesDtosPaginadaOrdenadaFiltrada(page, pageSize, orden, textFil, brand, sport, genre, colour, maximo, minimo);
+            return _repository.GetCantidad();
         }
 
-        public ShoeSize? GetShoeSize(Shoe shoe, Size size)
+        public List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
         {
-            try
-            {
-                return _repository.GetShoeSize(shoe, size);
-            }
-            catch (Exception)
-            {
+            return _repository.GetListaShoesPaginadaOrdenadaFiltrada(page,pageSize,orden,textFil, brand,sport,genre,colour,maximo,minimo);
+        }
 
-                throw;
-            }
+        public int GetCantidadFiltrada(Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null)
+        {
+            return _repository.GetCantidadFiltrada(brand, sport, genre, colour, maximo, minimo);
+        }
+
+        public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page, int pageSize, Orden? orden = null, string? textFil = null, Brand? brand = null, Sport? sport = null, Genre? genre = null, Colour? colour = null, decimal? maximo = null, decimal? minimo = null, Size? size = null)
+        {
+            return _repository.GetListaShoesDtosPaginadaOrdenadaFiltrada(page, pageSize, orden, textFil, brand, sport, genre, colour, maximo, minimo, size);
         }
 
         public void AgregarShoeSize(ShoeSize nuevaRelacion)
@@ -234,26 +153,6 @@ namespace TP01EF2024.Servicios.Servicios
             {
                 _unitOfWork.BeginTransaction();
                 _repository.AgregarShoeSize(nuevaRelacion);
-                _unitOfWork.Commit();
-            }
-            catch (Exception)
-            {
-                _unitOfWork.RollBack();
-                throw;
-            }
-        }
-
-        public bool ExisteShoeSize(ShoeSize shoesize)
-        {
-            return _repository.ExisteShoeSize(shoesize);
-        }
-
-        public void EliminarShoeSize(ShoeSize shoeSize)
-        {
-            try
-            {
-                _unitOfWork.BeginTransaction();
-                _repository.EliminarShoeSize(shoeSize);
                 _unitOfWork.Commit();
             }
             catch (Exception)
@@ -278,9 +177,56 @@ namespace TP01EF2024.Servicios.Servicios
             }
         }
 
+        public void EliminarShoeSize(ShoeSize shoeSize)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+                _repository.EliminarShoeSize(shoeSize);
+                _unitOfWork.Commit();
+            }
+            catch (Exception)
+            {
+                _unitOfWork.RollBack();
+                throw;
+            }
+        }
+
+        public bool ExisteShoeSize(ShoeSize shoesize)
+        {
+            return _repository.ExisteShoeSize(shoesize);
+        }
+
+        public ShoeSize? GetShoeSize(Shoe shoe, Size size)
+        {
+            try
+            {
+                return _repository.GetShoeSize(shoe, size);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Size> GetSizesForShoe(int shoeId)
+        {
+            try
+            {
+                return _repository.GetSizesForShoe(shoeId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe)
         {
             return _repository.GetShoesSizesPaginados(page, pageSize, shoe);
         }
+
     }
 }

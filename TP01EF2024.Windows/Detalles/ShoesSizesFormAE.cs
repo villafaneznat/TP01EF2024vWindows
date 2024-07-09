@@ -1,17 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using TP01EF2024.Entidades;
 using TP01EF2024.InversionOfControl;
 using TP01EF2024.Servicios.Interfaces;
-using Size = TP01EF2024.Entidades.Size;
 using TP01EF2024.Windows.Helpers;
+using Size = TP01EF2024.Entidades.Size;
 
 namespace TP01EF2024.Windows.Detalles
 {
@@ -19,8 +11,6 @@ namespace TP01EF2024.Windows.Detalles
     {
 
         private readonly IServiceProvider _serviceProvider = DI.ConfigurarServicios();
-        private readonly ISizesService _servicioTalles;
-        private readonly IShoesService _shoesService;
 
         ShoeSize? shoeSize;
 
@@ -28,12 +18,10 @@ namespace TP01EF2024.Windows.Detalles
 
         Size size;
 
-        public ShoesSizesFormAE(Shoe? shoe, IShoesService shoesService)
+        public ShoesSizesFormAE(Shoe? shoe)
         {
             InitializeComponent();
-            _servicioTalles = _serviceProvider.GetService<ISizesService>();
             this.shoe = shoe;
-            this._shoesService = shoesService;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -62,9 +50,7 @@ namespace TP01EF2024.Windows.Detalles
                     shoeSize = new ShoeSize();
                 }
 
-                //shoeSize.Shoe = shoe;
                 shoeSize.ShoeId = shoe.ShoeId;
-                //shoeSize.Size = size;
                 shoeSize.SizeId = size.SizeId;
                 shoeSize.QuantityInStock = int.Parse(StockTxt.Text);
 
@@ -108,8 +94,6 @@ namespace TP01EF2024.Windows.Detalles
             {
                 size = null;
             }
-
-
         }
 
         internal ShoeSize GetShoeSize()

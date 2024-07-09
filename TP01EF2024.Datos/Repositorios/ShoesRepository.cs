@@ -212,86 +212,10 @@ namespace TP01EF2024.Datos.Repositorios
                           .ToList(); ;
 
         }
-
+        
         public int GetCantidad()
         {
             return _context.Shoes.Count();
-        }
-
-        public int GetCantidadFiltrada(Brand? brand = null,
-            Sport? sport = null,
-            Genre? genre = null,
-            Colour? colour = null,
-            decimal? maximo = null,
-            decimal? minimo = null)
-        {
-            IQueryable<Shoe> query = _context.Shoes.AsNoTracking();
-            // FILTROS
-            if (brand != null)
-            {
-                query = query
-                    .Where(s => s.BrandId == brand.BrandId);
-            }
-            if (sport != null)
-            {
-                query = query
-                    .Where(s => s.SportId == sport.SportId);
-            }
-            if (genre != null)
-            {
-                query = query
-                    .Where(s => s.GenreId == genre.GenreId);
-            }
-            if (colour != null)
-            {
-                query = query
-                    .Where(s => s.ColourId == colour.ColourId);
-            }
-            //PRECIO
-            if (maximo != null && minimo != null)
-            {
-                query = query
-                    .Where(s => s.Price <= maximo)
-                    .Where(s => s.Price >= minimo);
-            }
-
-            return query.Count();
-        }
-
-        public List<Size> GetSizesForShoe(int shoeId)
-        {
-            return _context.ShoesSizes
-                .Include(ss => ss.Size)
-                .Where(ss => ss.ShoeId == shoeId)
-                .Select(ss => ss.Size)
-                .AsNoTracking()
-                .ToList();
-
-        }
-
-        public void AgregarShoeSize(ShoeSize nuevaRelacion)
-        {
-            _context.ShoesSizes.Add(nuevaRelacion);
-        }
-
-        public ShoeSize? GetShoeSize(Shoe shoe, Size size)
-        {
-            return _context.ShoesSizes
-                .Include(ss => ss.Shoe)
-                .Include(ss => ss.Size)
-                .FirstOrDefault(ss => ss.ShoeId == shoe.ShoeId && ss.SizeId == size.SizeId);
-        }
-
-
-        public void ActualizarShoeSize(ShoeSize shoeSize)
-        {
-            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoeSize.ShoeId);
-
-            if (shoeExist != null)
-            {
-                _context.Entry(shoeExist).State = EntityState.Detached;
-            }
-            _context.Set<ShoeSize>().Update(shoeSize);
         }
 
         public List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(
@@ -375,8 +299,48 @@ namespace TP01EF2024.Datos.Repositorios
             return listaPaginada;
         }
 
+        public int GetCantidadFiltrada(Brand? brand = null,
+            Sport? sport = null,
+            Genre? genre = null,
+            Colour? colour = null,
+            decimal? maximo = null,
+            decimal? minimo = null)
+        {
+            IQueryable<Shoe> query = _context.Shoes.AsNoTracking();
+            // FILTROS
+            if (brand != null)
+            {
+                query = query
+                    .Where(s => s.BrandId == brand.BrandId);
+            }
+            if (sport != null)
+            {
+                query = query
+                    .Where(s => s.SportId == sport.SportId);
+            }
+            if (genre != null)
+            {
+                query = query
+                    .Where(s => s.GenreId == genre.GenreId);
+            }
+            if (colour != null)
+            {
+                query = query
+                    .Where(s => s.ColourId == colour.ColourId);
+            }
+            //PRECIO
+            if (maximo != null && minimo != null)
+            {
+                query = query
+                    .Where(s => s.Price <= maximo)
+                    .Where(s => s.Price >= minimo);
+            }
+
+            return query.Count();
+        }
+
         public List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(
-            int page, 
+            int page,
             int pageSize,
             Orden? orden = null,
             string? textFil = null,
@@ -385,7 +349,8 @@ namespace TP01EF2024.Datos.Repositorios
             Genre? genre = null,
             Colour? colour = null,
             decimal? maximo = null,
-            decimal? minimo = null)
+            decimal? minimo = null,
+            Size? size = null)
         {
             IQueryable<Shoe> query = _context.Shoes
                .Include(s => s.Colour)
@@ -414,17 +379,24 @@ namespace TP01EF2024.Datos.Repositorios
                 query = query
                     .Where(s => s.ColourId == colour.ColourId);
             }
+            if (size != null)
+            {
+                query = query.Where(s => _context.ShoesSizes
+                               .Any(ss => ss.ShoeId == s.ShoeId && ss.SizeId == size.SizeId));
+            }
             //TEXTO FILTRO
             if (textFil != null)
             {
                 query = query.Where(s => s.Model.Contains(textFil));
             }
             //PRECIO
-            if (maximo != null && minimo != null)
+            if (maximo != null)
             {
-                query = query
-                    .Where(s => s.Price <= maximo)
-                    .Where(s => s.Price >= minimo);
+                query = query.Where(s => s.Price <= maximo);
+            }
+            if (minimo != null)
+            {                               
+                query = query.Where(s => s.Price >= minimo);
             }
             //ORDEN
             if (orden != null)
@@ -454,7 +426,7 @@ namespace TP01EF2024.Datos.Repositorios
                 .ToList();
 
             // Mapear los resultados a ShoeListDto
-            List<ShoeDto> listaDto = listaPaginada.Select(s => 
+            List<ShoeDto> listaDto = listaPaginada.Select(s =>
                                                   new ShoeDto
                                                   {
                                                       ShoeId = s.ShoeId,
@@ -470,6 +442,35 @@ namespace TP01EF2024.Datos.Repositorios
 
             return listaDto;
 
+        }
+
+
+        public void AgregarShoeSize(ShoeSize nuevaRelacion)
+        {
+            _context.ShoesSizes.Add(nuevaRelacion);
+        }
+
+        public void ActualizarShoeSize(ShoeSize shoeSize)
+        {
+            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoeSize.ShoeId);
+
+            if (shoeExist != null)
+            {
+                _context.Entry(shoeExist).State = EntityState.Detached;
+            }
+            _context.Set<ShoeSize>().Update(shoeSize);
+        }
+
+        public void EliminarShoeSize(ShoeSize shoeSize)
+        {
+            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoeSize.ShoeId);
+
+            if (shoeExist != null)
+            {
+                _context.Entry(shoeExist).State = EntityState.Detached;
+            }
+
+            _context.ShoesSizes.Remove(shoeSize);
         }
 
         public bool ExisteShoeSize(ShoeSize shoesize)
@@ -488,16 +489,23 @@ namespace TP01EF2024.Datos.Repositorios
 
         }
 
-        public void EliminarShoeSize(ShoeSize shoeSize)
+        public ShoeSize? GetShoeSize(Shoe shoe, Size size)
         {
-            var shoeExist = _context.Shoes.Local.FirstOrDefault(s => s.ShoeId == shoeSize.ShoeId);
+            return _context.ShoesSizes
+                .Include(ss => ss.Shoe)
+                .Include(ss => ss.Size)
+                .FirstOrDefault(ss => ss.ShoeId == shoe.ShoeId && ss.SizeId == size.SizeId);
+        }
 
-            if (shoeExist != null)
-            {
-                _context.Entry(shoeExist).State = EntityState.Detached;
-            }
+        public List<Size> GetSizesForShoe(int shoeId)
+        {
+            return _context.ShoesSizes
+                .Include(ss => ss.Size)
+                .Where(ss => ss.ShoeId == shoeId)
+                .Select(ss => ss.Size)
+                .AsNoTracking()
+                .ToList();
 
-            _context.ShoesSizes.Remove(shoeSize);
         }
 
         public List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe)

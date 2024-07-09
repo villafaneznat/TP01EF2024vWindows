@@ -28,7 +28,9 @@ namespace TP01EF2024.Windows.Detalles
         public ShoesFormDetalles(Shoe shoe, IShoesService service)
         {
             InitializeComponent();
+
             this.shoe = shoe;
+
             _servicioShoes = service;
         }
 
@@ -41,14 +43,7 @@ namespace TP01EF2024.Windows.Detalles
 
                 shoesSizes.Clear();
 
-                foreach (var s in sizes)
-                {
-                    var ss = _servicioShoes.GetShoeSize(shoe, s);
-                    if (ss != null)
-                    {
-                        shoesSizes.Add(ss);
-                    }
-                }
+                GetShoesSizes(sizes);
 
                 cantidadRegistros = shoesSizes.Count();
 
@@ -67,7 +62,18 @@ namespace TP01EF2024.Windows.Detalles
             ColorLbl.Text = shoe.Colour.ColourName;
             PrecioLbl.Text = shoe.Price.ToString();
             DescripcionTxt.Text = shoe.Description;
+        }
 
+        private void GetShoesSizes(List<Size> sizes)
+        {
+            foreach (var s in sizes)
+            {
+                var ss = _servicioShoes.GetShoeSize(shoe, s);
+                if (ss != null)
+                {
+                    shoesSizes.Add(ss);
+                }
+            }
         }
 
         private void RecargarGrilla()
@@ -75,8 +81,8 @@ namespace TP01EF2024.Windows.Detalles
             shoesSizesPaginados = _servicioShoes.GetShoesSizesPaginados(pageNum, pageSize, shoe);
 
             GridHelper.MostrarDatosEnGrilla<ShoeSize>(shoesSizesPaginados, DgvShoesSizes);
-
         }
+
         private void BackBtn_Click(object sender, EventArgs e)
         {
             Close();
@@ -84,7 +90,7 @@ namespace TP01EF2024.Windows.Detalles
 
         private void AgregarTalleBtn_Click(object sender, EventArgs e)
         {
-            ShoesSizesFormAE frm = new ShoesSizesFormAE(shoe, _servicioShoes);
+            ShoesSizesFormAE frm = new ShoesSizesFormAE(shoe);
 
             DialogResult dr = frm.ShowDialog(this);
 
@@ -127,7 +133,7 @@ namespace TP01EF2024.Windows.Detalles
 
             if (shoeSize == null) return;
 
-            ShoesSizesFormAE frm = new ShoesSizesFormAE(shoe, _servicioShoes);
+            ShoesSizesFormAE frm = new ShoesSizesFormAE(shoe);
 
             frm.SetShoeSize(shoeSize);
 
@@ -146,7 +152,7 @@ namespace TP01EF2024.Windows.Detalles
                 {
                     _servicioShoes.ActualizarShoeSize(shoesize);
 
-                    MessageBox.Show("Registro editado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Registro actualizado", " ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
                     shoesSizes.Clear();
 

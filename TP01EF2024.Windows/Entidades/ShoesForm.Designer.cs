@@ -34,12 +34,13 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            PanelRight = new Panel();
             FiltrarBtn = new FontAwesome.Sharp.IconButton();
             ActualizarBtn = new FontAwesome.Sharp.IconButton();
             panel4 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             BuscarZapatoTxt = new TextBox();
-            panel3 = new Panel();
+            PanelR = new Panel();
             panel6 = new Panel();
             OrderABtn = new FontAwesome.Sharp.IconButton();
             OrderPMinBtn = new FontAwesome.Sharp.IconButton();
@@ -71,7 +72,7 @@
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).BeginInit();
-            panel3.SuspendLayout();
+            PanelR.SuspendLayout();
             panel6.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvShoes).BeginInit();
@@ -79,6 +80,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(PanelRight);
             panel1.Controls.Add(FiltrarBtn);
             panel1.Controls.Add(ActualizarBtn);
             panel1.Controls.Add(panel4);
@@ -88,22 +90,31 @@
             panel1.Size = new Size(984, 66);
             panel1.TabIndex = 1;
             // 
+            // PanelRight
+            // 
+            PanelRight.BackColor = Color.Transparent;
+            PanelRight.Location = new Point(812, 66);
+            PanelRight.Name = "PanelRight";
+            PanelRight.Size = new Size(172, 465);
+            PanelRight.TabIndex = 9;
+            // 
             // FiltrarBtn
             // 
             FiltrarBtn.BackColor = Color.FromArgb(32, 32, 32);
             FiltrarBtn.FlatAppearance.BorderSize = 0;
             FiltrarBtn.FlatStyle = FlatStyle.Flat;
-            FiltrarBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            FiltrarBtn.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FiltrarBtn.ForeColor = Color.FromArgb(224, 224, 224);
             FiltrarBtn.IconChar = FontAwesome.Sharp.IconChar.None;
             FiltrarBtn.IconColor = Color.Black;
             FiltrarBtn.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            FiltrarBtn.Location = new Point(843, 14);
+            FiltrarBtn.Location = new Point(193, 17);
             FiltrarBtn.Name = "FiltrarBtn";
-            FiltrarBtn.Size = new Size(127, 34);
+            FiltrarBtn.Size = new Size(127, 29);
             FiltrarBtn.TabIndex = 7;
             FiltrarBtn.Text = "Filtrar";
             FiltrarBtn.UseVisualStyleBackColor = false;
+            FiltrarBtn.Click += FiltrarBtn_Click;
             // 
             // ActualizarBtn
             // 
@@ -154,27 +165,28 @@
             BuscarZapatoTxt.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             BuscarZapatoTxt.ForeColor = Color.FromArgb(224, 224, 224);
             BuscarZapatoTxt.Location = new Point(37, 6);
+            BuscarZapatoTxt.MaxLength = 150;
             BuscarZapatoTxt.Name = "BuscarZapatoTxt";
             BuscarZapatoTxt.PlaceholderText = "Buscar zapato por modelo...";
             BuscarZapatoTxt.Size = new Size(285, 16);
             BuscarZapatoTxt.TabIndex = 0;
             BuscarZapatoTxt.TextChanged += BuscarZapatoTxt_TextChanged;
             // 
-            // panel3
+            // PanelR
             // 
-            panel3.BackColor = Color.FromArgb(37, 37, 37);
-            panel3.Controls.Add(panel6);
-            panel3.Controls.Add(VerDetallesBtn);
-            panel3.Controls.Add(BorrarZapatoBtn);
-            panel3.Controls.Add(EditarZapatoBtn);
-            panel3.Controls.Add(NuevoZapatoBtn);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(812, 66);
-            panel3.MaximumSize = new Size(172, 500);
-            panel3.MinimumSize = new Size(172, 500);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(172, 500);
-            panel3.TabIndex = 4;
+            PanelR.BackColor = Color.FromArgb(37, 37, 37);
+            PanelR.Controls.Add(panel6);
+            PanelR.Controls.Add(VerDetallesBtn);
+            PanelR.Controls.Add(BorrarZapatoBtn);
+            PanelR.Controls.Add(EditarZapatoBtn);
+            PanelR.Controls.Add(NuevoZapatoBtn);
+            PanelR.Dock = DockStyle.Right;
+            PanelR.Location = new Point(812, 66);
+            PanelR.MaximumSize = new Size(172, 500);
+            PanelR.MinimumSize = new Size(172, 500);
+            PanelR.Name = "PanelR";
+            PanelR.Size = new Size(172, 500);
+            PanelR.TabIndex = 4;
             // 
             // panel6
             // 
@@ -632,7 +644,7 @@
             ControlBox = false;
             Controls.Add(DgvShoes);
             Controls.Add(panel2);
-            Controls.Add(panel3);
+            Controls.Add(PanelR);
             Controls.Add(panel1);
             MaximumSize = new Size(1000, 550);
             MinimumSize = new Size(1000, 550);
@@ -642,7 +654,7 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPictureBox1).EndInit();
-            panel3.ResumeLayout(false);
+            PanelR.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -657,7 +669,7 @@
         private Panel panel4;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private TextBox BuscarZapatoTxt;
-        private Panel panel3;
+        private Panel PanelR;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton BorrarZapatoBtn;
         private FontAwesome.Sharp.IconButton EditarZapatoBtn;
@@ -687,5 +699,6 @@
         private DataGridViewTextBoxColumn DeporteCol;
         private DataGridViewTextBoxColumn GeneroCol;
         private DataGridViewTextBoxColumn PrecioCol;
+        private Panel PanelRight;
     }
 }

@@ -18,6 +18,7 @@ namespace TP01EF2024.Datos.Interfaces
         bool Existe(Shoe shoe);
         Shoe? GetShoePorId(int id);
         List<Shoe> GetShoes();
+        List<ShoeDto> GetListaDto();
         int GetCantidad();
         List<Shoe> GetListaShoesPaginadaOrdenadaFiltrada(
             int page,
@@ -36,17 +37,6 @@ namespace TP01EF2024.Datos.Interfaces
             Colour? colour = null,
             decimal? maximo = null,
             decimal? minimo = null);
-
-        List<Size> GetSizesForShoe(int shoeId);
-
-        void AgregarShoeSize(ShoeSize nuevaRelacion);
-
-        ShoeSize? GetShoeSize(Shoe shoe, Size size);
-
-        void ActualizarShoeSize(ShoeSize shoeSize);
-
-        List<ShoeDto> GetListaDto();
-
         List<ShoeDto> GetListaShoesDtosPaginadaOrdenadaFiltrada(int page,
             int pageSize,
             Orden? orden = null,
@@ -56,10 +46,14 @@ namespace TP01EF2024.Datos.Interfaces
             Genre? genre = null,
             Colour? colour = null,
             decimal? maximo = null,
-            decimal? minimo = null);
-        bool ExisteShoeSize(ShoeSize shoesize);
+            decimal? minimo = null,
+            Size? size = null);
+        void AgregarShoeSize(ShoeSize nuevaRelacion);
+        void ActualizarShoeSize(ShoeSize shoeSize);
         void EliminarShoeSize(ShoeSize shoeSize);
-
+        bool ExisteShoeSize(ShoeSize shoesize);
+        ShoeSize? GetShoeSize(Shoe shoe, Size size);
+        List<Size> GetSizesForShoe(int shoeId);    
         List<ShoeSize> GetShoesSizesPaginados(int page, int pageSize, Shoe shoe);
     }
 }

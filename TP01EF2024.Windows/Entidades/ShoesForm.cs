@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Forms;
-using TP01EF2024.Entidades.Enums;
 using TP01EF2024.Entidades;
+using TP01EF2024.Entidades.Dtos;
+using TP01EF2024.Entidades.Enums;
 using TP01EF2024.InversionOfControl;
 using TP01EF2024.Servicios.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
-using TP01EF2024.Windows.Helpers;
 using TP01EF2024.Windows.Agregar_y_Editar;
-using TP01EF2024.Entidades.Dtos;
 using TP01EF2024.Windows.Detalles;
+using TP01EF2024.Windows.Helpers;
 
 namespace TP01EF2024.Windows.Entidades
 {
@@ -25,19 +17,18 @@ namespace TP01EF2024.Windows.Entidades
 
         private readonly IShoesService? _servicio;
 
-        //List<Shoe> shoes;
-
         List<ShoeDto> shoesDtos;
 
         string? textFil;
 
         Orden orden = Orden.SinOrden;
 
+        bool filtro = false;
+
         private int cantidadPaginas;
         private int pageSize = 8;
         private int pageNum = 0;
         private int cantidadRegistros;
-
 
         public ShoesForm()
         {
@@ -47,7 +38,6 @@ namespace TP01EF2024.Windows.Entidades
 
         private void ShoesForm_Load(object sender, EventArgs e)
         {
-            //shoes = _servicio.GetListaPaginadaOrdenadaFiltrada(pageNum, pageSize, orden);
             shoesDtos = _servicio.GetListaShoesDtosPaginadaOrdenadaFiltrada(pageNum, pageSize, orden);
             SeleccionarLista();
             RecargarGrilla(shoesDtos, cantidadRegistros);
@@ -56,7 +46,6 @@ namespace TP01EF2024.Windows.Entidades
 
         private void RecargarGrilla(List<ShoeDto> shoes, int cantReg)
         {
-
             cantidadPaginas = FormHelper.CalcularPaginas(cantReg, pageSize);
 
             CantidadPaginasLbl.Text = cantidadPaginas.ToString();
@@ -75,7 +64,11 @@ namespace TP01EF2024.Windows.Entidades
 
         private void SeleccionarLista()
         {
-            if (BuscarZapatoTxt.Text == "")
+            if (filtro)
+            {
+                cantidadRegistros = shoesDtos.Count();
+            }
+            else if (BuscarZapatoTxt.Text == "")
             {
                 shoesDtos = _servicio.GetListaShoesDtosPaginadaOrdenadaFiltrada(pageNum, pageSize, orden);
                 cantidadRegistros = _servicio.GetCantidad();
@@ -139,6 +132,8 @@ namespace TP01EF2024.Windows.Entidades
         private void ActualizarBtn_Click(object sender, EventArgs e)
         {
             orden = Orden.SinOrden;
+            filtro = false;
+            BuscarZapatoTxt.Enabled = true;
             SeleccionarLista();
             RecargarGrilla(shoesDtos, cantidadRegistros);
         }
@@ -310,6 +305,38 @@ namespace TP01EF2024.Windows.Entidades
             ShoesFormDetalles frm = new ShoesFormDetalles(shoe, _servicio);
 
             frm.Show();
+        }
+
+        private void FiltrarBtn_Click(object sender, EventArgs e)
+        {
+                       
+            if (filtro)
+            {
+                MessageBox.Show("Un filtro ya se ha a aplicado, debe actualizar para poder volver a filtrar","Actualizar",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                ShoesFiltroForm frm = new ShoesFiltroForm(servicioProvider);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel) { return; }
+                try
+                {
+                    shoesDtos = _servicio.GetListaShoesDtosPaginadaOrdenadaFiltrada(pageNum, pageSize, orden, null, frm.brand, frm.sport, frm.genre, frm.colour, frm.precioMax, frm.precioMin, frm.size);
+                    RecargarGrilla(shoesDtos, shoesDtos.Count());
+                    filtro = true;
+                    //FiltrarBtn.Enabled = false;
+                    //FiltrarBtn. = Color.FromArgb(224, 224, 224);
+                    BuscarZapatoTxt.Enabled = false;
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+
+
         }
     }
 }
